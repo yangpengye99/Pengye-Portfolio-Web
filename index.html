@@ -25,7 +25,8 @@
         --radius: 34px;
         --radius-soft: 22px;
         --radius-pill: 999px;
-        --container: 1100px;
+        --container: 1240px;
+        --card-pad: 22px;
       }
 
       * {
@@ -54,7 +55,7 @@
       }
 
       .page {
-        padding: 18px 18px 0;
+        padding: 12px 12px 0;
         flex: 1 0 auto;
         display: flex;
         background: #ffffff;
@@ -74,7 +75,7 @@
         border-radius: var(--radius);
         box-shadow: none;
         border: 0;
-        padding: 22px;
+        padding: var(--card-pad);
         flex: 1;
         min-height: 0;
         display: flex;
@@ -82,13 +83,19 @@
       }
 
       .topbar {
-        background: var(--surface-2);
+        background: rgba(244, 244, 244, 0.78);
         border-radius: var(--radius-pill);
         padding: 10px 14px;
         display: flex;
         align-items: center;
         justify-content: space-between;
         gap: 14px;
+        position: sticky;
+        top: 12px;
+        z-index: 20;
+        backdrop-filter: blur(14px);
+        -webkit-backdrop-filter: blur(14px);
+        border: 1px solid rgba(0, 0, 0, 0.04);
       }
 
       .brand {
@@ -166,7 +173,7 @@
       }
 
       .hero {
-        padding: 48px 18px;
+        padding: 48px 12px;
         min-height: clamp(300px, 52vh, 560px);
         display: flex;
         align-items: center;
@@ -205,7 +212,7 @@
 
       .section-title {
         text-align: center;
-        padding: 0 18px 14px;
+        padding: 0 12px 14px;
       }
 
       .section-title h2 {
@@ -216,12 +223,15 @@
       }
 
       .section-subtitle {
-        margin: 24px auto 12px;
+        margin: 24px 0 12px;
         font-size: 15px;
         font-weight: 400;
         letter-spacing: -0.01em;
         color: var(--muted-2);
-        max-width: 66ch;
+        max-width: none;
+        width: calc(100% + 24px);
+        margin-left: -12px;
+        margin-right: -12px;
       }
 
       .pills {
@@ -276,8 +286,12 @@
         overflow: hidden;
       }
 
+      .grid-stack.is-strip {
+        overflow: visible;
+      }
+
       .grid {
-        padding: 22px 18px 0;
+        padding: 22px 0 0;
         display: grid;
         grid-template-columns: repeat(2, minmax(0, 1fr));
         gap: 22px 26px;
@@ -311,6 +325,67 @@
 
       .grid--single .thumb {
         aspect-ratio: 16 / 9;
+      }
+
+      .grid--strip {
+        grid-template-columns: 1fr;
+        margin-left: calc(50% - 50vw);
+        margin-right: calc(50% - 50vw);
+        width: 100vw;
+      }
+
+      .screen-scroller {
+        overflow: hidden;
+        padding: 0 clamp(12px, 2vw, 26px) 10px;
+      }
+
+      .screen-track {
+        display: flex;
+        gap: 22px;
+        width: max-content;
+        animation: marquee var(--marquee-duration, 50s) linear infinite;
+        will-change: transform;
+      }
+
+      .screen-card {
+        display: grid;
+        gap: 10px;
+        min-width: clamp(208px, 22vw, 290px);
+      }
+
+      .screen-thumb {
+        width: 100%;
+        aspect-ratio: 9 / 19.5;
+        background: #d9d9d9;
+        border-radius: 26px;
+        overflow: hidden;
+      }
+
+      .screen-thumb img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        display: block;
+      }
+
+      .screen-thumb--contain img {
+        object-fit: contain;
+      }
+
+      .screen-label {
+        font-size: 13px;
+        color: var(--muted-2);
+        letter-spacing: -0.01em;
+        order: -1;
+      }
+
+      @keyframes marquee {
+        from {
+          transform: translateX(0);
+        }
+        to {
+          transform: translateX(calc(-1 * var(--marquee-distance, 50%)));
+        }
       }
 
       .work {
@@ -357,18 +432,18 @@
         overflow: hidden;
         text-overflow: ellipsis;
       }
-
+    
       .work p {
         margin: 0;
         font-size: 14px;
         color: var(--muted-2);
         font-weight: 400;
         line-height: 1.65;
-        max-width: 48ch;
+        max-width: none;
       }
 
       .bottom-gap {
-        height: 36px;
+        height: 35px;
       }
 
       footer {
@@ -460,6 +535,10 @@
         .thumb img {
           transition: none;
         }
+        .screen-track {
+          animation: none;
+          transform: none;
+        }
       }
     </style>
   </head>
@@ -499,7 +578,10 @@
             <h2>Idea in, pixel-perfect UI out.</h2>
             <div class="pills" role="tablist" aria-label="ä½œå“åˆ†ç±»">
               <span class="pill-indicator" aria-hidden="true"></span>
-              <button class="pill" role="tab" aria-selected="true" data-filter="ui">
+              <button class="pill" role="tab" aria-selected="true" data-filter="screen">
+                Screen Design
+              </button>
+              <button class="pill" role="tab" aria-selected="false" data-filter="ui">
                 UI Redesign
               </button>
               <button class="pill" role="tab" aria-selected="false" data-filter="uiux">
@@ -518,7 +600,54 @@
           </section>
 
           <div class="grid-stack" data-grid-stack>
-          <section class="grid is-active" aria-label="ä½œå“åˆ—è¡¨" data-grid="ui" aria-hidden="false">
+          <section class="grid grid--strip is-active" aria-label="Screen design list" data-grid="screen" aria-hidden="false">
+            <div class="screen-scroller" aria-label="Screen design scroller">
+              <div class="screen-track">
+                <article class="screen-card">
+                  <div class="screen-thumb" aria-hidden="true"></div>
+                  <div class="screen-label">Concept Screen 01</div>
+                </article>
+                <article class="screen-card">
+                  <div class="screen-thumb" aria-hidden="true"></div>
+                  <div class="screen-label">Concept Screen 02</div>
+                </article>
+                <article class="screen-card">
+                  <div class="screen-thumb" aria-hidden="true"></div>
+                  <div class="screen-label">Concept Screen 03</div>
+                </article>
+                <article class="screen-card">
+                  <div class="screen-thumb" aria-hidden="true"></div>
+                  <div class="screen-label">Concept Screen 04</div>
+                </article>
+                <article class="screen-card">
+                  <div class="screen-thumb" aria-hidden="true"></div>
+                  <div class="screen-label">Concept Screen 05</div>
+                </article>
+                <article class="screen-card">
+                  <div class="screen-thumb" aria-hidden="true"></div>
+                  <div class="screen-label">Concept Screen 06</div>
+                </article>
+                <article class="screen-card">
+                  <div class="screen-thumb" aria-hidden="true"></div>
+                  <div class="screen-label">Concept Screen 07</div>
+                </article>
+                <article class="screen-card">
+                  <div class="screen-thumb" aria-hidden="true"></div>
+                  <div class="screen-label">Concept Screen 08</div>
+                </article>
+                <article class="screen-card">
+                  <div class="screen-thumb" aria-hidden="true"></div>
+                  <div class="screen-label">Concept Screen 09</div>
+                </article>
+                <article class="screen-card">
+                  <div class="screen-thumb" aria-hidden="true"></div>
+                  <div class="screen-label">Concept Screen 10</div>
+                </article>
+              </div>
+            </div>
+          </section>
+
+          <section class="grid" aria-label="ä½œå“åˆ—è¡¨" data-grid="ui" aria-hidden="true">
             <article class="work">
               <div class="thumb">
                 <img
@@ -656,8 +785,11 @@
       const indicator = document.querySelector(".pill-indicator");
       const gridStack = document.querySelector(".grid-stack");
       const grids = Array.from(document.querySelectorAll("[data-grid]"));
-      let activeGrid = grids.find((grid) => grid.dataset.grid === "ui");
+      let activeGrid = grids.find((grid) => grid.dataset.grid === "screen");
       const filterOrder = pills.map((pill) => pill.dataset.filter);
+      const prefersReducedMotion = window.matchMedia(
+        "(prefers-reduced-motion: reduce)"
+      ).matches;
 
       function positionIndicator(activePill) {
         if (!pillsWrap || !indicator || !activePill) return;
@@ -698,6 +830,9 @@
           nextGrid.classList.remove("is-leaving");
           nextGrid.setAttribute("aria-hidden", "false");
           activeGrid = nextGrid;
+          if (gridStack) {
+            gridStack.classList.toggle("is-strip", filter === "screen");
+          }
 
           requestAnimationFrame(() => {
             if (gridStack) {
@@ -713,6 +848,9 @@
         }
 
         positionIndicator(activePill);
+        if (gridStack) {
+          gridStack.classList.toggle("is-strip", filter === "screen");
+        }
         if (gridStack && activeGrid) {
           gridStack.style.height = `${activeGrid.offsetHeight}px`;
         }
@@ -722,7 +860,7 @@
         pill.addEventListener("click", () => setActive(pill.dataset.filter));
       }
 
-      setActive("ui");
+      setActive("screen");
       window.addEventListener("resize", () => {
         const current = pills.find((p) => p.getAttribute("aria-selected") === "true");
         positionIndicator(current);
@@ -730,6 +868,35 @@
           gridStack.style.height = `${activeGrid.offsetHeight}px`;
         }
       });
+
+      function setupScreenMarquee() {
+        if (prefersReducedMotion) return;
+        const scroller = document.querySelector(".screen-scroller");
+        const track = scroller ? scroller.querySelector(".screen-track") : null;
+        if (!scroller || !track) return;
+
+        if (track.dataset.cloned !== "true") {
+          const items = Array.from(track.children);
+          for (const item of items) {
+            track.appendChild(item.cloneNode(true));
+          }
+          track.dataset.cloned = "true";
+        }
+
+        const update = () => {
+          const distance = track.scrollWidth / 2;
+          const speed = 38; // px per second
+          const duration = Math.max(10, distance / speed);
+          track.style.setProperty("--marquee-distance", `${distance}px`);
+          track.style.setProperty("--marquee-duration", `${duration}s`);
+        };
+
+        update();
+        window.addEventListener("resize", update);
+      }
+
+      window.addEventListener("load", setupScreenMarquee);
+      requestAnimationFrame(setupScreenMarquee);
     </script>
   </body>
 </html>

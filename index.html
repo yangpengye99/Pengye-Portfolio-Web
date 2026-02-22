@@ -74,94 +74,39 @@
           </section>
 
           <div class="grid-stack" data-grid-stack>
-          <section class="grid grid--strip is-active" aria-label="Screen design list" data-grid="screen" aria-hidden="false">
-            <div class="strip-inner">
-              <div class="screen-intro">
-                <p class="screen-intro-desc">
-                  These redesign works demonstrate my process of translating AI-generated
-                  ideas into intentional, pixel-perfect interfaces.By combining rapid AI
-                  prototyping with structured product thinking, I reconstruct complex
-                  systems into simplified, minimal, and refined UI experiences.
-                </p>
-                <h3>From inspiration to creation.</h3>
-                <div class="screen-intro-grid">
-                  <article class="screen-intro-card">
-                    <div class="screen-intro-media screen-intro-media--dark"></div>
-                    <div class="screen-intro-text">
-                      <strong>Copy to Figma</strong>
-                      <p>
-                        Download designs you like or copy it straight into Figma with our
-                        new Figma plugin.
-                      </p>
-                    </div>
-                  </article>
-                  <article class="screen-intro-card">
-                    <div class="screen-intro-media"></div>
-                    <div class="screen-intro-text">
-                      <strong>Save to collections</strong>
-                      <p>
-                        Collect your favorite designs and upload your own screenshots into
-                        one place.
-                      </p>
-                    </div>
-                  </article>
-                  <article class="screen-intro-card">
-                    <div class="screen-intro-media screen-intro-media--light"></div>
-                    <div class="screen-intro-text">
-                      <strong>Leave comments</strong>
-                      <p>
-                        Take notes upon saving so you’ll never forget the context in the
-                        future.
-                      </p>
-                    </div>
-                  </article>
-                </div>
-              </div>
-            </div>
-            <div class="screen-scroller" aria-label="Screen design scroller">
-              <div class="screen-track">
-                <article class="screen-card">
-                  <div class="screen-thumb" aria-hidden="true"></div>
-                  <div class="screen-label">Concept Screen 01</div>
-                </article>
-                <article class="screen-card">
-                  <div class="screen-thumb" aria-hidden="true"></div>
-                  <div class="screen-label">Concept Screen 02</div>
-                </article>
-                <article class="screen-card">
-                  <div class="screen-thumb" aria-hidden="true"></div>
-                  <div class="screen-label">Concept Screen 03</div>
-                </article>
-                <article class="screen-card">
-                  <div class="screen-thumb" aria-hidden="true"></div>
-                  <div class="screen-label">Concept Screen 04</div>
-                </article>
-                <article class="screen-card">
-                  <div class="screen-thumb" aria-hidden="true"></div>
-                  <div class="screen-label">Concept Screen 05</div>
-                </article>
-                <article class="screen-card">
-                  <div class="screen-thumb" aria-hidden="true"></div>
-                  <div class="screen-label">Concept Screen 06</div>
-                </article>
-                <article class="screen-card">
-                  <div class="screen-thumb" aria-hidden="true"></div>
-                  <div class="screen-label">Concept Screen 07</div>
-                </article>
-                <article class="screen-card">
-                  <div class="screen-thumb" aria-hidden="true"></div>
-                  <div class="screen-label">Concept Screen 08</div>
-                </article>
-                <article class="screen-card">
-                  <div class="screen-thumb" aria-hidden="true"></div>
-                  <div class="screen-label">Concept Screen 09</div>
-                </article>
-                <article class="screen-card">
-                  <div class="screen-thumb" aria-hidden="true"></div>
-                  <div class="screen-label">Concept Screen 10</div>
-                </article>
-              </div>
-            </div>
+          <section class="grid grid--screen is-active" aria-label="Screen design list" data-grid="screen" aria-hidden="false">
+            <article class="screen-tile is-mid">
+              <div class="thumb thumb--screen" aria-hidden="true"></div>
+              <div class="screen-caption">Concept Screen 01</div>
+            </article>
+            <article class="screen-tile is-tall">
+              <div class="thumb thumb--screen" aria-hidden="true"></div>
+              <div class="screen-caption">Concept Screen 02</div>
+            </article>
+            <article class="screen-tile is-mid">
+              <div class="thumb thumb--screen" aria-hidden="true"></div>
+              <div class="screen-caption">Concept Screen 03</div>
+            </article>
+            <article class="screen-tile is-tall">
+              <div class="thumb thumb--screen" aria-hidden="true"></div>
+              <div class="screen-caption">Concept Screen 04</div>
+            </article>
+            <article class="screen-tile is-tall">
+              <div class="thumb thumb--screen" aria-hidden="true"></div>
+              <div class="screen-caption">Concept Screen 05</div>
+            </article>
+            <article class="screen-tile is-mid">
+              <div class="thumb thumb--screen" aria-hidden="true"></div>
+              <div class="screen-caption">Concept Screen 06</div>
+            </article>
+            <article class="screen-tile is-tall">
+              <div class="thumb thumb--screen" aria-hidden="true"></div>
+              <div class="screen-caption">Concept Screen 07</div>
+            </article>
+            <article class="screen-tile is-mid">
+              <div class="thumb thumb--screen" aria-hidden="true"></div>
+              <div class="screen-caption">Concept Screen 08</div>
+            </article>
           </section>
 
           <section class="grid" aria-label="ä½œå“åˆ—è¡¨" data-grid="ui" aria-hidden="true">
@@ -348,13 +293,10 @@
           nextGrid.classList.remove("is-leaving");
           nextGrid.setAttribute("aria-hidden", "false");
           activeGrid = nextGrid;
-          if (gridStack) {
-            gridStack.classList.toggle("is-strip", filter === "screen");
-          }
-
           requestAnimationFrame(() => {
             if (gridStack) {
-              gridStack.style.height = `${nextGrid.offsetHeight}px`;
+              gridStack.style.height =
+                filter === "screen" ? "auto" : `${nextGrid.offsetHeight}px`;
             }
           });
 
@@ -367,15 +309,12 @@
 
         positionIndicator(activePill);
         if (sectionSubtitle) {
-          const hideSubtitle = filter === "screen";
-          sectionSubtitle.classList.toggle("is-hidden", hideSubtitle);
-          sectionSubtitle.setAttribute("aria-hidden", hideSubtitle ? "true" : "false");
-        }
-        if (gridStack) {
-          gridStack.classList.toggle("is-strip", filter === "screen");
+          sectionSubtitle.classList.remove("is-hidden");
+          sectionSubtitle.setAttribute("aria-hidden", "false");
         }
         if (gridStack && activeGrid) {
-          gridStack.style.height = `${activeGrid.offsetHeight}px`;
+          const isScreen = activeGrid.dataset.grid === "screen";
+          gridStack.style.height = isScreen ? "auto" : `${activeGrid.offsetHeight}px`;
         }
       }
 
@@ -388,7 +327,8 @@
         const current = pills.find((p) => p.getAttribute("aria-selected") === "true");
         positionIndicator(current);
         if (gridStack && activeGrid) {
-          gridStack.style.height = `${activeGrid.offsetHeight}px`;
+          const isScreen = activeGrid.dataset.grid === "screen";
+          gridStack.style.height = isScreen ? "auto" : `${activeGrid.offsetHeight}px`;
         }
       });
 

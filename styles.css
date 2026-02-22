@@ -339,7 +339,7 @@ body {
 }
 
 .screen-intro-desc {
-  margin: -80px auto 8px;
+  margin: 0 auto 8px;
   max-width: 760px;
   font-size: 15px;
   line-height: 1.6;
@@ -415,7 +415,11 @@ body {
 
 .screen-scroller {
   overflow: hidden;
-  padding: 30px clamp(12px, 2vw, 26px) 100px;
+  padding: 18px clamp(12px, 2vw, 26px) 18px;
+}
+
+.screen-scroller-block {
+  margin: 0;
 }
 
 .screen-track {
@@ -429,12 +433,12 @@ body {
 .screen-card {
   display: grid;
   gap: 10px;
-  min-width: clamp(208px, 22vw, 290px);
+  min-width: clamp(170px, 18vw, 240px);
 }
 
       .screen-thumb {
         width: 100%;
-        aspect-ratio: 9 / 19.5;
+        aspect-ratio: 9 / 16;
         background: #d9d9d9;
         border-radius: 26px;
         overflow: hidden;
@@ -480,14 +484,78 @@ body {
         align-content: start;
       }
 
-      .thumb {
-        width: 100%;
-        aspect-ratio: 4 / 3;
-        background: #d9d9d9;
-        border-radius: var(--radius-soft);
-        position: relative;
-        overflow: hidden;
-      }
+.thumb {
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  background: #d9d9d9;
+  border-radius: var(--radius-soft);
+  position: relative;
+  overflow: hidden;
+}
+
+.thumb--screen {
+  aspect-ratio: 1290 / 2796;
+  height: auto;
+}
+
+.grid--screen {
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 26px;
+  align-items: start;
+}
+
+.screen-tile {
+  display: grid;
+  gap: 10px;
+  transition: transform 220ms ease, box-shadow 220ms ease;
+  will-change: transform;
+}
+
+.screen-tile:hover {
+  transform: translateY(-8px);
+}
+
+.screen-caption {
+  font-size: 12px;
+  color: var(--muted-2);
+  text-align: center;
+  letter-spacing: -0.01em;
+}
+.grid--screen.is-active {
+  position: relative;
+}
+
+.grid--screen .screen-tile:nth-child(1) {
+  margin-top: 90px;
+}
+
+.grid--screen .screen-tile:nth-child(2) {
+  margin-top: 30px;
+}
+
+.grid--screen .screen-tile:nth-child(3) {
+  margin-top: 110px;
+}
+
+.grid--screen .screen-tile:nth-child(4) {
+  margin-top: 20px;
+}
+
+.grid--screen .screen-tile:nth-child(5) {
+  margin-top: 40px;
+}
+
+.grid--screen .screen-tile:nth-child(6) {
+  margin-top: 10px;
+}
+
+.grid--screen .screen-tile:nth-child(7) {
+  margin-top: 60px;
+}
+
+.grid--screen .screen-tile:nth-child(8) {
+  margin-top: 20px;
+}
 
       .thumb img {
         width: 100%;

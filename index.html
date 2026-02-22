@@ -14,533 +14,7 @@
       href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap"
       rel="stylesheet"
     />
-    <style>
-      :root {
-        --surface: #ffffff;
-        --surface-2: #F4F4F4;
-        --surface-3: #F4F4F4;
-        --text: #0f0f10;
-        --muted: #6b6b70;
-        --muted-2: #9a9aa0;
-        --radius: 34px;
-        --radius-soft: 22px;
-        --radius-pill: 999px;
-        --container: 1240px;
-        --card-pad: 22px;
-      }
-
-      * {
-        box-sizing: border-box;
-      }
-
-      html {
-        height: 100%;
-      }
-
-      body {
-        margin: 0;
-        background: #0b0b0c;
-        color: var(--text);
-        font-family: "Poppins", ui-sans-serif, system-ui, -apple-system, Segoe UI,
-          Roboto, Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji";
-        line-height: 1.35;
-        min-height: 100dvh;
-        display: flex;
-        flex-direction: column;
-      }
-
-      a {
-        color: inherit;
-        text-decoration: none;
-      }
-
-      .page {
-        padding: 12px 12px 0;
-        flex: 1 0 auto;
-        display: flex;
-        background: #ffffff;
-        border-radius: 0 0 var(--radius) var(--radius);
-        overflow: visible;
-      }
-
-      .shell {
-        max-width: var(--container);
-        margin: 0 auto;
-        width: 100%;
-        display: flex;
-      }
-
-      .card {
-        background: var(--surface);
-        border-radius: var(--radius);
-        box-shadow: none;
-        border: 0;
-        padding: var(--card-pad);
-        flex: 1;
-        min-height: 0;
-        display: flex;
-        flex-direction: column;
-      }
-
-      .topbar {
-        background: rgba(244, 244, 244, 0.78);
-        border-radius: var(--radius-pill);
-        padding: 10px 14px;
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        gap: 14px;
-        position: sticky;
-        top: 12px;
-        z-index: 20;
-        backdrop-filter: blur(14px);
-        -webkit-backdrop-filter: blur(14px);
-        border: 1px solid rgba(0, 0, 0, 0.04);
-      }
-
-      .brand {
-        display: flex;
-        align-items: center;
-        gap: 12px;
-        font-weight: 650;
-        letter-spacing: -0.02em;
-      }
-
-      .logo {
-        width: 34px;
-        height: 34px;
-        border-radius: 50%;
-        display: grid;
-        place-items: center;
-        border: none;
-        background: transparent;
-        font-weight: 800;
-        overflow: hidden;
-      }
-
-      .logo img {
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-        display: block;
-      }
-
-      .nav {
-        display: flex;
-        align-items: center;
-        gap: 12px;
-      }
-
-      .nav a.link {
-        font-size: 13px;
-        color: #333;
-        padding: 10px 12px;
-        border-radius: 12px;
-        position: relative;
-      }
-
-      .nav a.link:hover {
-        background: transparent;
-      }
-
-      .nav a.link:hover::after {
-        content: "";
-        position: absolute;
-        left: 50%;
-        bottom: 2px;
-        width: 18px;
-        height: 2px;
-        background: #111;
-        transform: translateX(-50%);
-        border-radius: 2px;
-      }
-
-      .btn {
-        display: inline-flex;
-        align-items: center;
-        justify-content: center;
-        padding: 10px 16px; 
-        border-radius: var(--radius-pill);
-        font-size: 13px;
-        font-weight: 600;
-        background: #fff;
-        border: 1px solid var(--border);
-        box-shadow: none;
-      }
-
-      .btn:hover {
-        background: #fafafa;
-      }
-
-      .hero {
-        padding: 48px 12px;
-        min-height: clamp(300px, 52vh, 560px);
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        text-align: center;
-      }
-
-      .hero-inner {
-        max-width: 760px;
-      }
-
-      .hero h1 {
-        margin: 0 0 10px;
-        font-size: clamp(20px, 5.6vw, 46px);
-        font-weight: 780;
-        letter-spacing: -0.03em;
-        line-height: 1.12;
-        white-space: nowrap;
-      }
-
-      .hero h1 .role {
-        font-weight: 520;
-        white-space: nowrap;
-      }
-
-      .hero p {
-        margin: 0;
-        font-size: clamp(19px, 2.4vw, 28px);
-        letter-spacing: -0.02em;
-        color: #8888;
-      }
-
-      .spacer {
-        height: 0;
-      }
-
-      .section-title {
-        text-align: center;
-        padding: 0 12px 14px;
-      }
-
-      .section-title h2 {
-        margin: 0 0 18px;
-        font-size: 45px;
-        letter-spacing: -0.03em;
-        font-weight: 820;
-      }
-
-      .section-subtitle {
-        margin: 24px 0 12px;
-        font-size: 15px;
-        font-weight: 400;
-        letter-spacing: -0.01em;
-        color: var(--muted-2);
-        max-width: none;
-        width: calc(100% + 24px);
-        margin-left: -12px;
-        margin-right: -12px;
-      }
-
-      .pills {
-        display: inline-flex;
-        --pad: 6px;
-        gap: 6px;
-        padding: var(--pad);
-        background: #F4F4F4;
-        border-radius: var(--radius-pill);
-        border: none;
-        position: relative;
-      }
-
-      .pill-indicator {
-        position: absolute;
-        top: var(--pad);
-        bottom: var(--pad);
-        left: 0;
-        width: var(--indicator-w, 0px);
-        transform: translateX(var(--indicator-x, 0px));
-        border-radius: var(--radius-pill);
-        background: #ffffff;
-        border: 1px solid rgba(0, 0, 0, 0.06);
-        box-shadow: none;
-        pointer-events: none;
-        transition: transform 260ms cubic-bezier(0.2, 0.8, 0.2, 1),
-          width 260ms cubic-bezier(0.2, 0.8, 0.2, 1);
-        will-change: transform, width;
-      }
-
-      .pill {
-        border: 0;
-        background: transparent;
-        padding: 7px 12px;
-        border-radius: var(--radius-pill);
-        font-size: 15px;
-        color: var(--muted-2);
-        cursor: pointer;
-        transition: background 160ms ease, color 160ms ease;
-        font-family: inherit;
-        position: relative;
-        z-index: 1;
-      }
-
-      .pill[aria-selected="true"] {
-        color: #1a1a1d;
-      }
-
-      .grid-stack {
-        position: relative;
-        height: auto;
-        overflow: hidden;
-      }
-
-      .grid-stack.is-strip {
-        overflow: visible;
-      }
-
-      .grid {
-        padding: 22px 0 0;
-        display: grid;
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-        gap: 22px 26px;
-        opacity: 0;
-        transform: translateX(var(--enter, 24px));
-        pointer-events: none;
-        transition: opacity 320ms ease, transform 320ms ease;
-        position: absolute;
-        left: 0;
-        right: 0;
-        top: 0;
-        width: 100%;
-        will-change: transform, opacity;
-      }
-
-      .grid.is-active {
-        opacity: 1;
-        transform: translateX(0);
-        pointer-events: auto;
-      }
-
-      .grid.is-leaving {
-        opacity: 0;
-        transform: translateX(var(--exit, -24px));
-      }
-
-      .grid--single {
-        grid-template-columns: 1fr;
-        gap: 28px;
-      }
-
-      .grid--single .thumb {
-        aspect-ratio: 16 / 9;
-      }
-
-      .grid--strip {
-        grid-template-columns: 1fr;
-        margin-left: calc(50% - 50vw);
-        margin-right: calc(50% - 50vw);
-        width: 100vw;
-      }
-
-      .screen-scroller {
-        overflow: hidden;
-        padding: 0 clamp(12px, 2vw, 26px) 10px;
-      }
-
-      .screen-track {
-        display: flex;
-        gap: 22px;
-        width: max-content;
-        animation: marquee var(--marquee-duration, 50s) linear infinite;
-        will-change: transform;
-      }
-
-      .screen-card {
-        display: grid;
-        gap: 10px;
-        min-width: clamp(208px, 22vw, 290px);
-      }
-
-      .screen-thumb {
-        width: 100%;
-        aspect-ratio: 9 / 19.5;
-        background: #d9d9d9;
-        border-radius: 26px;
-        overflow: hidden;
-      }
-
-      .screen-thumb img {
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-        display: block;
-      }
-
-      .screen-thumb--contain img {
-        object-fit: contain;
-      }
-
-      .screen-label {
-        font-size: 13px;
-        color: var(--muted-2);
-        letter-spacing: -0.01em;
-        order: -1;
-      }
-
-      @keyframes marquee {
-        from {
-          transform: translateX(0);
-        }
-        to {
-          transform: translateX(calc(-1 * var(--marquee-distance, 50%)));
-        }
-      }
-
-      .work {
-        display: grid;
-        gap: 22px;
-        align-content: start;
-        align-items: start;
-      }
-
-      .work-text {
-        display: grid;
-        gap: 15px;
-        align-content: start;
-      }
-
-      .thumb {
-        width: 100%;
-        aspect-ratio: 4 / 3;
-        background: #d9d9d9;
-        border-radius: var(--radius-soft);
-        position: relative;
-        overflow: hidden;
-      }
-
-      .thumb img {
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-        display: block;
-        transform: scale(1);
-        transition: transform 320ms cubic-bezier(0.2, 0.7, 0.2, 1);
-      }
-
-      .work:hover .thumb img {
-        transform: scale(1.04);
-      }
-
-      .work h3 {
-        margin: 0;
-        font-size: 18px;
-        font-weight: 500;
-        letter-spacing: -0.01em;
-        white-space: nowrap;
-        overflow: hidden;
-        text-overflow: ellipsis;
-      }
-    
-      .work p {
-        margin: 0;
-        font-size: 14px;
-        color: var(--muted-2);
-        font-weight: 400;
-        line-height: 1.65;
-        max-width: none;
-      }
-
-      .bottom-gap {
-        height: 35px;
-      }
-
-      footer {
-        background: #0b0b0c;
-        color: rgba(255, 255, 255, 0.86);
-        padding: 18px 18px 22px;
-      }
-
-      .footer-inner {
-        max-width: var(--container);
-        margin: 0 auto;
-        display: flex;
-        align-items: flex-end;
-        justify-content: space-between;
-        gap: 16px;
-        font-size: 12px;
-      }
-
-      .footer-right {
-        display: flex;
-        flex-direction: column;
-        align-items: flex-end;
-        gap: 6px;
-        text-align: right;
-        color: rgba(255, 255, 255, 0.45);
-      }
-
-      .footer-social {
-        width: 44px;
-        height: 44px;
-        border-radius: 50%;
-        display: grid;
-        place-items: center;
-        background: #0a66c2;
-        color: #fff;
-        box-shadow: 0 14px 30px rgba(0, 0, 0, 0.35);
-        border: 1px solid rgba(255, 255, 255, 0.18);
-        font-weight: 900;
-        letter-spacing: -0.02em;
-        margin-bottom: 10px;
-      }
-
-      .footer-social:focus-visible,
-      .btn:focus-visible,
-      .pill:focus-visible,
-      .nav a.link:focus-visible {
-        outline: 3px solid rgba(10, 102, 194, 0.35);
-        outline-offset: 3px;
-      }
-
-      @media (max-width: 860px) {
-        .hero {
-          padding: 56px 10px 46px;
-        }
-        .hero h1,
-        .hero h1 .role {
-          white-space: normal;
-        }
-        .grid {
-          grid-template-columns: 1fr;
-        }
-        .spacer {
-          height: 70px;
-        }
-        .footer-inner {
-          flex-direction: column;
-          align-items: flex-start;
-        }
-        .footer-right {
-          align-items: flex-start;
-          text-align: left;
-        }
-      }
-
-      @media (prefers-reduced-motion: reduce) {
-        .pill {
-          transition: none;
-        }
-        .pill-indicator {
-          transition: none;
-        }
-        .grid {
-          transition: none;
-          transform: none;
-        }
-        .grid.is-leaving {
-          transform: none;
-        }
-        .thumb img {
-          transition: none;
-        }
-        .screen-track {
-          animation: none;
-          transform: none;
-        }
-      }
-    </style>
+    <link rel="stylesheet" href="styles.css" />
   </head>
   <body>
     <div class="page" id="home">
@@ -601,6 +75,49 @@
 
           <div class="grid-stack" data-grid-stack>
           <section class="grid grid--strip is-active" aria-label="Screen design list" data-grid="screen" aria-hidden="false">
+            <div class="strip-inner">
+              <div class="screen-intro">
+                <p class="screen-intro-desc">
+                  These redesign works demonstrate my process of translating AI-generated
+                  ideas into intentional, pixel-perfect interfaces.By combining rapid AI
+                  prototyping with structured product thinking, I reconstruct complex
+                  systems into simplified, minimal, and refined UI experiences.
+                </p>
+                <h3>From inspiration to creation.</h3>
+                <div class="screen-intro-grid">
+                  <article class="screen-intro-card">
+                    <div class="screen-intro-media screen-intro-media--dark"></div>
+                    <div class="screen-intro-text">
+                      <strong>Copy to Figma</strong>
+                      <p>
+                        Download designs you like or copy it straight into Figma with our
+                        new Figma plugin.
+                      </p>
+                    </div>
+                  </article>
+                  <article class="screen-intro-card">
+                    <div class="screen-intro-media"></div>
+                    <div class="screen-intro-text">
+                      <strong>Save to collections</strong>
+                      <p>
+                        Collect your favorite designs and upload your own screenshots into
+                        one place.
+                      </p>
+                    </div>
+                  </article>
+                  <article class="screen-intro-card">
+                    <div class="screen-intro-media screen-intro-media--light"></div>
+                    <div class="screen-intro-text">
+                      <strong>Leave comments</strong>
+                      <p>
+                        Take notes upon saving so you’ll never forget the context in the
+                        future.
+                      </p>
+                    </div>
+                  </article>
+                </div>
+              </div>
+            </div>
             <div class="screen-scroller" aria-label="Screen design scroller">
               <div class="screen-track">
                 <article class="screen-card">
@@ -783,6 +300,7 @@
       const pills = Array.from(document.querySelectorAll(".pill"));
       const pillsWrap = document.querySelector(".pills");
       const indicator = document.querySelector(".pill-indicator");
+      const sectionSubtitle = document.querySelector(".section-subtitle");
       const gridStack = document.querySelector(".grid-stack");
       const grids = Array.from(document.querySelectorAll("[data-grid]"));
       let activeGrid = grids.find((grid) => grid.dataset.grid === "screen");
@@ -848,6 +366,11 @@
         }
 
         positionIndicator(activePill);
+        if (sectionSubtitle) {
+          const hideSubtitle = filter === "screen";
+          sectionSubtitle.classList.toggle("is-hidden", hideSubtitle);
+          sectionSubtitle.setAttribute("aria-hidden", hideSubtitle ? "true" : "false");
+        }
         if (gridStack) {
           gridStack.classList.toggle("is-strip", filter === "screen");
         }
@@ -900,3 +423,5 @@
     </script>
   </body>
 </html>
+
+

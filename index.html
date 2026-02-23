@@ -53,24 +53,45 @@
             <h2>Idea in, pixel-perfect UI out.</h2>
             <div class="pills" role="tablist" aria-label="ä½œå“åˆ†ç±»">
               <span class="pill-indicator" aria-hidden="true"></span>
-              <button class="pill" role="tab" aria-selected="true" data-filter="screen">
+              <button
+                class="pill"
+                role="tab"
+                aria-selected="true"
+                data-filter="screen"
+                data-subtitle="These screen designs showcase my ability to craft diverse, high-fidelity UI across different industries and visual styles — from dark glassmorphism to bold neubrutalism. Each screen is built with precision, proving that strong aesthetics and clear usability can coexist in any context."
+              >
                 Screen Design
               </button>
-              <button class="pill" role="tab" aria-selected="false" data-filter="ui">
+              <button
+                class="pill"
+                role="tab"
+                aria-selected="false"
+                data-filter="ui"
+                data-subtitle="These redesign works demonstrate my process of translating AI-generated ideas into intentional, pixel-perfect interfaces. By combining rapid AI prototyping with structured product thinking, I reconstruct complex systems into simplified, minimal, and refined UI experiences."
+              >
                 UI Redesign
               </button>
-              <button class="pill" role="tab" aria-selected="false" data-filter="uiux">
+              <button
+                class="pill"
+                role="tab"
+                aria-selected="false"
+                data-filter="uiux"
+                data-subtitle="These redesign works demonstrate my process of translating AI-generated ideas into intentional, pixel-perfect interfaces. By combining rapid AI prototyping with structured product thinking, I reconstruct complex systems into simplified, minimal, and refined UI experiences."
+              >
                 UI/UX Design
               </button>
-              <button class="pill" role="tab" aria-selected="false" data-filter="ux">
+              <button
+                class="pill"
+                role="tab"
+                aria-selected="false"
+                data-filter="ux"
+                data-subtitle="These redesign works demonstrate my process of translating AI-generated ideas into intentional, pixel-perfect interfaces. By combining rapid AI prototyping with structured product thinking, I reconstruct complex systems into simplified, minimal, and refined UI experiences."
+              >
                 UX Workflow Design
               </button>
             </div>
             <p class="section-subtitle">
-              These redesign works demonstrate my process of translating AI-generated
-              ideas into intentional, pixel-perfect interfaces.By combining rapid AI
-              prototyping with structured product thinking, I reconstruct complex
-              systems into simplified, minimal, and refined UI experiences.
+              Great UI isn't one-size-fits-all. These screens explore how different visual languages — from soft organic minimalism to high-contrast brutalism — serve different user needs and brand personalities, while maintaining a consistent standard of craft and clarity.
             </p>
           </section>
 
@@ -359,6 +380,9 @@
         }
 
         positionIndicator(activePill);
+        if (sectionSubtitle && activePill && activePill.dataset.subtitle) {
+          sectionSubtitle.textContent = activePill.dataset.subtitle;
+        }
         if (sectionSubtitle) {
           sectionSubtitle.classList.remove("is-hidden");
           sectionSubtitle.setAttribute("aria-hidden", "false");

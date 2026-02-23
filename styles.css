@@ -496,6 +496,7 @@ body {
 .thumb--screen {
   aspect-ratio: 1290 / 2796;
   height: auto;
+  box-shadow: 0 12px 24px rgba(15, 15, 16, 0.12);
 }
 
 .grid--screen {

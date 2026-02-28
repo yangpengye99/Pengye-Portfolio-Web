@@ -326,6 +326,18 @@
         "(prefers-reduced-motion: reduce)"
       ).matches;
 
+      function setupPressBounce() {
+        if (prefersReducedMotion) return;
+        const selectors = ".pill, .btn, .nav a.link, .footer-social, .work-link";
+        document.querySelectorAll(selectors).forEach((element) => {
+          element.addEventListener("click", () => {
+            element.classList.remove("is-pressed");
+            void element.offsetWidth;
+            element.classList.add("is-pressed");
+          });
+        });
+      }
+
       function positionIndicator(activePill) {
         if (!pillsWrap || !indicator || !activePill) return;
         indicator.style.setProperty("--indicator-x", `${activePill.offsetLeft}px`);
@@ -398,6 +410,7 @@
       }
 
       setActive("screen");
+      setupPressBounce();
       window.addEventListener("resize", () => {
         const current = pills.find((p) => p.getAttribute("aria-selected") === "true");
         positionIndicator(current);

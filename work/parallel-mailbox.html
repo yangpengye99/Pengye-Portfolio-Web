@@ -11,14 +11,15 @@
   <link rel="icon" href="/assets/img/ui/favicon.svg" type="image/svg+xml">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@500;600&family=Mrs+Saint+Delafield&family=Playfair+Display:wght@400;900&family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@500&family=Mrs+Saint+Delafield&family=Playfair+Display:wght@400;900&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="/assets/css/main.css">
+  <script>document.addEventListener("error",function(e){var t=e.target;if(t.tagName==="IMG"&&/\.avif$/.test(t.getAttribute("src")||""))t.src=t.getAttribute("src").replace(/\.avif$/,".webp")},true)</script>
 </head>
 <body style="--accent: #d9b26a">
 
 <nav class="nav" aria-label="Primary">
   <a class="nav-brand" href="/" aria-label="Pengye Yang, home">
-    <img src="/assets/img/lib/logo-white.webp" width="108" height="91" alt="Pengye Yang">
+    <img decoding="async" src="/assets/img/lib/logo-white.avif" width="108" height="91" alt="Pengye Yang">
   </a>
   <div class="nav-links">
     <a href="/#work" class="keep active">Work</a>
@@ -29,7 +30,7 @@
 <main>
   <!-- HERO -->
   <header class="case-hero dim">
-    <div class="case-hero-bg" style="--hero-pos:70% 40%"><img src="/assets/img/mailbox/hero.webp" width="1400" height="1867" alt="" fetchpriority="high"></div>
+    <div class="case-hero-bg" style="--hero-pos:70% 40%"><img decoding="async" src="/assets/img/mailbox/hero.avif" width="1400" height="1867" alt="" fetchpriority="high"></div>
     <div class="wrap hero-split">
       <div>
         <span class="vibe-badge reveal">RED Vibe Coding Challenge · 2026</span>
@@ -40,8 +41,8 @@
         <div class="case-hero-meta reveal d4"><b>PROJECT</b><span>Concept / Narrative System / Interaction / Visual Design / Front-end</span></div>
       </div>
       <div class="hero-phones reveal-scale">
-        <div class="phone dark"><img src="/assets/img/mailbox/intro.webp" width="560" height="1214" alt="Intro: a floating envelope among planets and a shooting star"></div>
-        <div class="phone dark"><img src="/assets/img/mailbox/letter-gilded.webp" width="560" height="1212" alt="The rare gilded letter with an infinity postmark"></div>
+        <div class="phone dark"><img decoding="async" src="/assets/img/mailbox/intro.avif" width="560" height="1214" alt="Intro: a floating envelope among planets and a shooting star"></div>
+        <div class="phone dark"><img decoding="async" src="/assets/img/mailbox/letter-gilded.avif" width="560" height="1212" alt="The rare gilded letter with an infinity postmark"></div>
       </div>
     </div>
   </header>
@@ -54,16 +55,16 @@
         <h2 class="h-1 reveal d1"><span class="grad">Play the real build</span></h2>
         <p class="lede reveal d2" style="margin-top:16px">Pick eight photos that feel like today, seal the envelope and send it — then break the wax on a letter from another life-line. One in a hundred letters arrives gilded.</p>
         <div class="demo-actions reveal d3">
-          <a class="btn btn-primary" href="/play/parallel-mailbox/" target="_blank" rel="noopener">Open full screen <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+          <a class="btn btn-primary" href="/play/parallel-mailbox/index.html" target="_blank" rel="noopener">Open full screen <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
           <button class="btn btn-glass" data-demo-restart>Restart</button>
         </div>
         <p class="demo-note reveal d4">The exact offline package submitted to RED (Chinese-language UI). Saving and posting need the RED app, so the build falls back to screenshot mode here.</p>
       </div>
-      <div class="demo-phone reveal-scale" data-src="/play/parallel-mailbox/" data-title="Parallel Mailbox">
+      <div class="demo-phone reveal-scale" data-src="/play/parallel-mailbox/index.html" data-title="Parallel Mailbox">
         <span class="demo-island" aria-hidden="true"></span>
         <div class="demo-screen">
           <button class="demo-cover" aria-label="Play Parallel Mailbox">
-            <img src="/assets/img/mailbox/intro.webp" alt="">
+            <img decoding="async" src="/assets/img/mailbox/intro.avif" alt="">
             <span class="demo-play"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M7 4.5v15l13-7.5z"/></svg>Tap to play</span>
           </button>
         </div>
@@ -93,12 +94,12 @@
         <p class="small reveal d2" style="margin-top:12px">Chinese-language product · screens shown as shipped.</p>
       </div>
       <div class="flow6">
-        <div class="step reveal"><span class="step-n">1</span><h3>Intro</h3><p>Starfield and planets; the envelope cycles through all 17 designs.</p><div class="phone dark"><img src="/assets/img/mailbox/intro.webp" width="560" height="1214" alt="" loading="lazy"></div></div>
-        <div class="step reveal d1"><span class="step-n">2</span><h3>Handover</h3><p>An empty envelope, addressed to you.</p><div class="phone dark"><img src="/assets/img/mailbox/handover.webp" width="430" height="932" alt="" loading="lazy"></div></div>
-        <div class="step reveal d2"><span class="step-n">3</span><h3>Eight choices</h3><p>Each picked photo flies into the envelope.</p><div class="phone dark"><img src="/assets/img/mailbox/intake.webp" width="430" height="932" alt="" loading="lazy"></div></div>
-        <div class="step reveal d3"><span class="step-n">4</span><h3>Seal &amp; send</h3><p>Wax closes it; a warp starfield locks onto your universe.</p><div class="phone dark"><img src="/assets/img/mailbox/sealed.webp" width="560" height="1214" alt="" loading="lazy"></div></div>
-        <div class="step reveal d4"><span class="step-n">5</span><h3>The letter</h3><p>You break the seal; the reply and its photo appear.</p><div class="phone dark"><img src="/assets/img/mailbox/letter-common.webp" width="560" height="1214" alt="" loading="lazy"></div></div>
-        <div class="step reveal d4"><span class="step-n">6</span><h3>Why this?</h3><p>Only the photos you picked explain the result.</p><div class="phone dark"><img src="/assets/img/mailbox/why.webp" width="430" height="932" alt="" loading="lazy"></div></div>
+        <div class="step reveal"><span class="step-n">1</span><h3>Intro</h3><p>Starfield and planets; the envelope cycles through all 17 designs.</p><div class="phone dark"><img decoding="async" src="/assets/img/mailbox/intro.avif" width="560" height="1214" alt="" loading="lazy"></div></div>
+        <div class="step reveal d1"><span class="step-n">2</span><h3>Handover</h3><p>An empty envelope, addressed to you.</p><div class="phone dark"><img decoding="async" src="/assets/img/mailbox/handover.avif" width="430" height="932" alt="" loading="lazy"></div></div>
+        <div class="step reveal d2"><span class="step-n">3</span><h3>Eight choices</h3><p>Each picked photo flies into the envelope.</p><div class="phone dark"><img decoding="async" src="/assets/img/mailbox/intake.avif" width="430" height="932" alt="" loading="lazy"></div></div>
+        <div class="step reveal d3"><span class="step-n">4</span><h3>Seal &amp; send</h3><p>Wax closes it; a warp starfield locks onto your universe.</p><div class="phone dark"><img decoding="async" src="/assets/img/mailbox/sealed.avif" width="560" height="1214" alt="" loading="lazy"></div></div>
+        <div class="step reveal d4"><span class="step-n">5</span><h3>The letter</h3><p>You break the seal; the reply and its photo appear.</p><div class="phone dark"><img decoding="async" src="/assets/img/mailbox/letter-common.avif" width="560" height="1214" alt="" loading="lazy"></div></div>
+        <div class="step reveal d4"><span class="step-n">6</span><h3>Why this?</h3><p>Only the photos you picked explain the result.</p><div class="phone dark"><img decoding="async" src="/assets/img/mailbox/why.avif" width="430" height="932" alt="" loading="lazy"></div></div>
       </div>
     </div>
   </section>
@@ -126,10 +127,10 @@
         <div class="card pad reveal d3"><h3 class="h-4">Rhythm Universe</h3></div>
       </div>
       <div class="grid c4" style="margin-top:24px">
-        <figure class="figure reveal" style="margin:0;aspect-ratio:1"><img src="/assets/img/mailbox/replies-1.webp" width="900" height="900" alt="Reply photos, set 1" loading="lazy"></figure>
-        <figure class="figure reveal d1" style="margin:0;aspect-ratio:1"><img src="/assets/img/mailbox/replies-2.webp" width="900" height="900" alt="Reply photos, set 2" loading="lazy"></figure>
-        <figure class="figure reveal d2" style="margin:0;aspect-ratio:1"><img src="/assets/img/mailbox/replies-3.webp" width="900" height="900" alt="Reply photos, set 3" loading="lazy"></figure>
-        <figure class="figure reveal d3" style="margin:0;aspect-ratio:1"><img src="/assets/img/mailbox/replies-4.webp" width="900" height="900" alt="Reply photos, set 4" loading="lazy"></figure>
+        <figure class="figure reveal" style="margin:0;aspect-ratio:1"><img decoding="async" src="/assets/img/mailbox/replies-1.avif" width="900" height="900" alt="Reply photos, set 1" loading="lazy"></figure>
+        <figure class="figure reveal d1" style="margin:0;aspect-ratio:1"><img decoding="async" src="/assets/img/mailbox/replies-2.avif" width="900" height="900" alt="Reply photos, set 2" loading="lazy"></figure>
+        <figure class="figure reveal d2" style="margin:0;aspect-ratio:1"><img decoding="async" src="/assets/img/mailbox/replies-3.avif" width="900" height="900" alt="Reply photos, set 3" loading="lazy"></figure>
+        <figure class="figure reveal d3" style="margin:0;aspect-ratio:1"><img decoding="async" src="/assets/img/mailbox/replies-4.avif" width="900" height="900" alt="Reply photos, set 4" loading="lazy"></figure>
       </div>
       <p class="cap">The 16 cinematic night “reply photos”. Choices also encode a postmark from 00 to FF, which maps to how many years later the letter was written.</p>
     </div>
@@ -153,8 +154,8 @@
         <p class="small reveal" style="margin-top:12px">17 envelopes in pure CSS/SVG — zero bitmaps. Odds verified over 200,000 simulated draws.</p>
       </div>
       <div class="grid c2" style="align-items:end">
-        <figure class="figure reveal" style="margin:0;border-radius:28px"><img src="/assets/img/mailbox/flatlay.webp" width="1200" height="1600" alt="All 17 envelope designs laid out by rarity tier" loading="lazy"></figure>
-        <div class="phone dark reveal d1"><img src="/assets/img/mailbox/letter-gilded.webp" width="560" height="1212" alt="The gilded letter" loading="lazy"></div>
+        <figure class="figure reveal" style="margin:0;border-radius:28px"><img decoding="async" src="/assets/img/mailbox/flatlay.avif" width="1200" height="1600" alt="All 17 envelope designs laid out by rarity tier" loading="lazy"></figure>
+        <div class="phone dark reveal d1"><img decoding="async" src="/assets/img/mailbox/letter-gilded.avif" width="560" height="1212" alt="The gilded letter" loading="lazy"></div>
       </div>
     </div>
   </section>
@@ -170,8 +171,8 @@
         <div class="reveal">
           <span class="ba-label">v1 · Bone paper &amp; a brass mailbox</span>
           <div class="ba-media" style="aspect-ratio:auto;display:grid;grid-template-columns:1fr 1fr;gap:12px;background:none">
-            <div class="phone"><img src="/assets/img/mailbox/v1-intro.webp" width="430" height="932" alt="v1 intro with a cream mailbox" loading="lazy"></div>
-            <div class="phone"><img src="/assets/img/mailbox/v1-reveal.webp" width="430" height="932" alt="v1 letter with a tilted photo print" loading="lazy"></div>
+            <div class="phone"><img decoding="async" src="/assets/img/mailbox/v1-intro.avif" width="430" height="932" alt="v1 intro with a cream mailbox" loading="lazy"></div>
+            <div class="phone"><img decoding="async" src="/assets/img/mailbox/v1-reveal.avif" width="430" height="932" alt="v1 letter with a tilted photo print" loading="lazy"></div>
           </div>
           <ul class="checks">
             <li>Warm bone paper (#F4EFE4), archive red and a Song-style serif built a calm, archival mood.</li>
@@ -182,8 +183,8 @@
         <div class="reveal d1">
           <span class="ba-label new">v2 · The night sky</span>
           <div class="ba-media" style="aspect-ratio:auto;display:grid;grid-template-columns:1fr 1fr;gap:12px;background:none">
-            <div class="phone dark"><img src="/assets/img/mailbox/sealed.webp" width="560" height="1214" alt="v2 question screen with a sealed envelope" loading="lazy"></div>
-            <div class="phone dark"><img src="/assets/img/mailbox/letter-common.webp" width="560" height="1214" alt="v2 letter" loading="lazy"></div>
+            <div class="phone dark"><img decoding="async" src="/assets/img/mailbox/sealed.avif" width="560" height="1214" alt="v2 question screen with a sealed envelope" loading="lazy"></div>
+            <div class="phone dark"><img decoding="async" src="/assets/img/mailbox/letter-common.avif" width="560" height="1214" alt="v2 letter" loading="lazy"></div>
           </div>
           <ul class="checks">
             <li>Photos load into the envelope inline; you break the wax yourself on delivery.</li>
@@ -195,7 +196,7 @@
       </div>
   </section>
 
-  <a class="next-card" href="/work/six-petal-bloom" style="--next-bg:url('/assets/img/bloom/patterns.webp');--next-pos:50% 50%">
+  <a class="next-card" href="/work/six-petal-bloom" style="--next-bg:url('/assets/img/bloom/patterns.avif');--next-pos:50% 50%">
     <span class="next-card-inner">
       <span>
         <small>Next project</small>
@@ -203,7 +204,7 @@
         <span class="next-sub" style="display:block">Grow a Song-style crackle glaze in six taps</span>
         <span class="btn btn-primary">View case study <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
       </span>
-      <span class="next-card-media"><img src="/assets/img/bloom/patterns.webp" alt="" loading="lazy"></span>
+      <span class="next-card-media"><img decoding="async" src="/assets/img/bloom/patterns.avif" alt="" loading="lazy"></span>
     </span>
   </a>
 </main>

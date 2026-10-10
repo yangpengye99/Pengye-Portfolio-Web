@@ -1,4 +1,5 @@
 (() => {
+
   const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
   // Reveal on scroll

@@ -1,0 +1,199 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover">
+  <meta name="theme-color" content="#000000">
+  <meta name="format-detection" content="telephone=no">
+  <meta name="color-scheme" content="dark">
+  <title>六出凝华</title>
+  <link rel="icon" href="assets/images/snow-mark.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="assets/css/styles.css">
+</head>
+<body>
+  <main id="app" class="app-shell" data-phase="ENTRY">
+    <canvas id="ambient-canvas" class="ambient-canvas" aria-hidden="true"></canvas>
+    <canvas id="result-bg" class="result-bg" aria-hidden="true"></canvas>
+    <section id="scene-entry" class="scene scene-entry is-active" aria-labelledby="entry-title">
+      <canvas id="entry-canvas" class="entry-canvas" aria-hidden="true"></canvas>
+      <div class="entry-copy">
+        <h1 id="entry-title" class="brush-title" aria-label="六出凝华">
+          <img class="brush-art" data-art="title" src="assets/images/entry-title.webp" alt="" aria-hidden="true">
+          <span class="brush-char">六</span><span class="brush-char">出</span><span class="brush-char">凝</span><span class="brush-char">华</span>
+          <span class="entry-seal" aria-hidden="true"><i>凝</i><i>六</i><i>华</i><i>出</i></span>
+        </h1>
+        <img class="gloss-art" data-art="gloss" src="assets/images/entry-gloss.webp" alt="" aria-hidden="true">
+        <p class="entry-gloss">六出为雪称</p>
+        <p class="entry-gloss">凝华是水汽成晶</p>
+      </div>
+      <button id="start-button" class="entry-touch" type="button" aria-label="轻触进入制作"></button>
+      <div class="entry-action">
+        <p class="entry-invite">轻 触 进 入</p>
+        <img class="hint-art" data-art="hint" src="assets/images/entry-hint.webp" alt="" aria-hidden="true">
+        <p class="entry-hint">— 择一件器，点六次，成一纹 —</p>
+      </div>
+    </section>
+
+    <section id="scene-select" class="scene scene-select" aria-labelledby="select-title" hidden>
+      <header class="scene-header select-header">
+        <button id="select-back-button" class="icon-back-button" type="button" aria-label="返回首页">
+          <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+            <path d="M15 5 8 12l7 7"></path>
+          </svg>
+        </button>
+        <p id="select-title" class="select-intro">四器各有冰纹</p>
+        <button id="archive-button" class="icon-back-button archive-button" type="button" aria-label="打开作品仓">
+          <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+            <path d="M4.5 8.5h15"></path>
+            <path d="M5.5 8.5c.7 5.3 2.9 8 6.5 8s5.8-2.7 6.5-8"></path>
+            <path d="M8.5 18.5h7"></path>
+          </svg>
+          <span id="archive-count" class="archive-count" aria-hidden="true" hidden>0</span>
+        </button>
+      </header>
+      <div class="select-detail">
+        <p id="select-name" class="select-name">轻点选择一件器</p>
+      </div>
+      <div id="vessel-list" class="vessel-list" role="radiogroup" aria-label="选择器物"></div>
+      <div class="select-action">
+        <button id="select-next-button" class="primary-action" type="button">下一步</button>
+      </div>
+    </section>
+
+    <section id="scene-archive" class="scene scene-archive" aria-labelledby="archive-title" hidden>
+      <header class="scene-header archive-header">
+        <button id="archive-back-button" class="icon-back-button" type="button" aria-label="返回择器">
+          <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+            <path d="M15 5 8 12l7 7"></path>
+          </svg>
+        </button>
+        <div class="archive-heading">
+          <h2 id="archive-title">作品仓</h2>
+          <p>往作留影</p>
+        </div>
+      </header>
+      <div id="archive-list" class="archive-list" role="list" aria-label="以前完成的作品"></div>
+      <p id="archive-empty" class="archive-empty">尚无留影，完成一件作品后会收在这里。</p>
+
+      <div id="archive-viewer" class="archive-viewer" role="dialog" aria-modal="true" aria-label="全屏查看作品" hidden>
+        <img id="archive-viewer-image" class="archive-viewer-image" alt="已完成作品的全屏截图">
+        <button id="archive-viewer-back" class="icon-back-button archive-viewer-back" type="button" aria-label="返回作品仓">
+          <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+            <path d="M15 5 8 12l7 7"></path>
+          </svg>
+        </button>
+        <div class="archive-viewer-actions">
+          <button id="archive-save-button" class="primary-action" type="button">再次保存</button>
+        </div>
+      </div>
+    </section>
+
+    <section id="scene-create" class="scene scene-create" aria-labelledby="create-title" hidden>
+      <header class="scene-header create-header">
+        <button id="create-back-button" class="icon-back-button" type="button" aria-label="返回择器">
+          <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+            <path d="M15 5 8 12l7 7"></path>
+          </svg>
+        </button>
+        <div class="create-title-group">
+          <img class="create-title-art" data-art="create" src="assets/images/create-title-vertical.webp" alt="凝花" aria-hidden="true">
+        </div>
+        <div class="header-actions">
+          <button id="undo-button" class="text-action" type="button" disabled>撤回</button>
+          <button id="reset-button" class="text-action" type="button">重置</button>
+        </div>
+      </header>
+
+      <div id="vessel-stage" class="vessel-stage">
+        <canvas id="vessel-canvas" class="vessel-canvas" aria-label="一件尚无结晶的白瓷器。轻点盏心开始凝花。"></canvas>
+        <canvas id="fx-canvas" class="fx-canvas" aria-hidden="true"></canvas>
+        <span id="tap-feedback" class="tap-feedback" aria-hidden="true"></span>
+        <div id="gesture-hint" class="gesture-hint" hidden>拖动器物旋转　双指移动缩放</div>
+        <p id="working-hint" class="working-hint" hidden>凝 结 中</p>
+      </div>
+
+      <div class="create-guidance">
+        <p id="create-hint">轻点盏心，结晶会由落点向四周蔓延</p>
+        <div id="progress-dots" class="progress-dots" aria-hidden="true"></div>
+      </div>
+
+      <div class="create-action-zone">
+        <div class="finish-zone">
+          <p id="crystal-color" class="crystal-color" hidden></p>
+          <p id="finish-hint">再凝五重即可收笔</p>
+          <button id="finish-button" class="primary-action" type="button" hidden>收笔取景</button>
+        </div>
+
+        <div id="frame-bar" class="frame-bar" hidden>
+          <div class="frame-actions">
+            <button id="frame-back-button" class="text-action" type="button">回凝花</button>
+            <button id="capture-button" class="primary-action" type="button">定格成章</button>
+          </div>
+        </div>
+      </div>
+
+      <div id="finalizing-layer" class="finalizing-layer" hidden>
+        <span class="finalizing-ring" aria-hidden="true"></span>
+        <p>釉光归心　凝华成章</p>
+      </div>
+
+      <div id="result-overlay" class="result-overlay" hidden>
+        <div class="result-mark" aria-hidden="true">
+          <img
+            class="result-watermark"
+            src="assets/images/entry-title.webp"
+            alt=""
+            decoding="async"
+          >
+          <span class="entry-seal result-seal"><i>凝</i><i>六</i><i>华</i><i>出</i></span>
+        </div>
+        <div class="result-inscription" aria-live="polite">
+          <p id="result-line1" class="result-small"></p>
+          <p id="result-line3" class="result-small"></p>
+        </div>
+        <div class="result-bar">
+          <button id="save-button" class="primary-action" type="button">截图保存</button>
+          <div class="secondary-actions">
+            <button id="publish-button" class="text-action" type="button">发布到小红书</button>
+            <button id="again-button" class="text-action" type="button">再作一件</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div id="reset-dialog" class="dialog-backdrop" hidden>
+      <section class="dialog-panel" role="dialog" aria-modal="true" aria-labelledby="reset-title">
+        <h2 id="reset-title" class="brush-heading">重新凝花？</h2>
+        <p>当前结晶会清空，器物保留，并换一轮新色。</p>
+        <div class="dialog-actions">
+          <button id="reset-cancel-button" class="text-action" type="button">继续创作</button>
+          <button id="reset-confirm-button" class="primary-action" type="button">重新开始</button>
+        </div>
+      </section>
+    </div>
+
+    <p id="toast" class="toast" role="status" aria-live="polite" hidden></p>
+  </main>
+
+  <script src="assets/js/core/prng.js"></script>
+  <script src="assets/js/core/palette.js"></script>
+  <script src="assets/js/core/vessels.js"></script>
+  <script src="assets/js/core/crackle.js"></script>
+  <script src="assets/js/core/crystal.js"></script>
+  <script src="assets/js/core/naming.js"></script>
+  <script src="assets/js/core/composition.js"></script>
+  <script src="assets/js/core/interaction.js"></script>
+  <script src="assets/js/core/session.js"></script>
+  <script src="assets/js/core/archive.js"></script>
+  <script src="assets/js/core/audio-data.js"></script>
+  <script src="assets/js/core/audio.js"></script>
+  <script src="assets/js/adapters/xhs-host.js"></script>
+  <script src="assets/js/render/glaze-texture.js"></script>
+  <script src="assets/js/render/vessel3d.js"></script>
+  <script src="assets/js/render/vessel2d.js"></script>
+  <script src="assets/js/render/entry-field.js"></script>
+  <script src="assets/js/render/ambient.js"></script>
+  <script src="assets/js/render/poster.js"></script>
+  <script src="assets/js/app.js"></script>
+</body>
+</html>

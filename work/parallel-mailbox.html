@@ -49,6 +49,31 @@
     </div>
   </header>
 
+  <!-- PLAY -->
+  <section class="section" id="play" style="--demo-glow:rgba(217,178,106,.16)">
+    <div class="wrap demo">
+      <div>
+        <span class="eyebrow reveal">Try it</span>
+        <h2 class="h-1 reveal d1"><span class="grad">Play the real build</span></h2>
+        <p class="lede reveal d2" style="margin-top:16px">Pick eight photos that feel like today, seal the envelope and send it — then break the wax on a letter from another life-line. One in a hundred letters arrives gilded.</p>
+        <div class="demo-actions reveal d3">
+          <a class="btn btn-primary" href="/play/parallel-mailbox/" target="_blank" rel="noopener">Open full screen <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+          <button class="btn btn-glass" data-demo-restart>Restart</button>
+        </div>
+        <p class="demo-note reveal d4">The exact offline package submitted to RED (Chinese-language UI). Saving and posting need the RED app, so the build falls back to screenshot mode here.</p>
+      </div>
+      <div class="demo-phone reveal-scale" data-src="/play/parallel-mailbox/" data-title="Parallel Mailbox">
+        <span class="demo-island" aria-hidden="true"></span>
+        <div class="demo-screen">
+          <button class="demo-cover" aria-label="Play Parallel Mailbox">
+            <img src="/assets/img/mailbox/intro.webp" alt="">
+            <span class="demo-play"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M7 4.5v15l13-7.5z"/></svg>Tap to play</span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <!-- ABOUT -->
   <section class="section">
     <div class="wrap center">
@@ -58,22 +83,6 @@
         <div><b>Role</b><span>Solo designer &amp; developer</span></div>
         <div><b>Platform</b><span>RED mini-tool · offline HTML5</span></div>
         <div><b>Date</b><span>Aug 2026</span></div>
-      </div>
-    </div>
-  </section>
-
-  <!-- PROBLEM -->
-  <section class="section">
-    <div class="wrap">
-      <div class="section-head center">
-        <span class="eyebrow reveal">Problem</span>
-        <h2 class="h-1 reveal d1"><span class="grad">Gentle encouragement, without writing a word</span></h2>
-        <p class="lede reveal d2">Students and early-career 18–34-year-olds scroll RED late at night. They want a moment to pause and some non-judging warmth — without journaling, filling in forms or exposing private data.</p>
-      </div>
-      <div class="grid c3">
-        <div class="card pad reveal"><h3 class="h-4">Zero input cost</h3><p class="body" style="margin-top:10px">Eight A/B photo choices replace typing. A nickname is optional and lives in memory only.</p></div>
-        <div class="card pad reveal d1"><h3 class="h-4">Personal, not predictive</h3><p class="body" style="margin-top:10px">The letter reflects today’s choices; it never claims to predict the future or diagnose you.</p></div>
-        <div class="card pad reveal d2"><h3 class="h-4">A reveal worth waiting for</h3><p class="body" style="margin-top:10px">In v1, opening the letter wasn’t surprising enough — v2 is built around that beat.</p></div>
       </div>
     </div>
   </section>
@@ -186,45 +195,20 @@
           </ul>
         </div>
       </div>
-      <h3 class="h-3 reveal" style="margin:clamp(50px,6vw,80px) 0 18px">Interaction lab: three alternative mechanics</h3>
-      <ul class="timeline">
-        <li class="reveal"><b>A</b><p><strong>Envelope collecting</strong> — each of the eight picks adds a visible layer to the envelope.</p></li>
-        <li class="reveal d1"><b>B</b><p><strong>Tonight in three frames</strong> — sort photos into keep, let go and carry to tomorrow.</p></li>
-        <li class="reveal d2"><b>C</b><p><strong>Two-way reply</strong> — three photo signals, then you choose how to answer.</p></li>
-      </ul>
-      <p class="body reveal" style="margin-top:16px">Verdict: go for moderated research, no-go for production — the variants differ in several ways at once, so a preference couldn’t be traced to one mechanic. Lessons logged in the specs: animations must look right in their static end state, flight arcs must run horizontally, and a planet ring at 178% width was cut back to 142% so it stopped slicing the screen.</p>
-    </div>
+      </div>
   </section>
 
-  <!-- VISUAL + ENGINEERING -->
-  <section class="section">
-    <div class="wrap split">
-      <div>
-        <span class="eyebrow reveal">Visual Direction</span>
-        <h2 class="h-1 reveal d1"><span class="grad">Colour only where it means something</span></h2>
-        <p class="lede reveal d2" style="margin-top:16px">Text is black, white and grey only. Letter paper is always white (#FBFAF8, ink #2A2A2C). Colour comes solely from the photos, the envelopes and the wax — five tier sigils: postal bar, sprout, four-point star, constellation and compass.</p>
-        <div class="swatches reveal d3" style="margin-top:24px">
-          <div class="swatch" style="background:radial-gradient(circle at 30% 20%,#1b2140,#05060a 70%);color:#888;box-shadow:inset 0 0 0 1px rgba(255,255,255,.14)">Night<br>deep space</div>
-          <div class="swatch" style="background:#fbfaf8;color:#555">Paper<br>#FBFAF8</div>
-          <div class="swatch" style="background:#2a2a2c;color:#aaa">Ink<br>#2A2A2C</div>
-          <div class="swatch" style="background:linear-gradient(160deg,#f3d68e,#b8893a);color:#3d2a08">Gilded<br>wax</div>
-        </div>
-      </div>
-      <div>
-        <img class="reveal-scale" src="/assets/img/mailbox/wax.webp" width="444" height="297" alt="Close-up of a wax seal on the envelope" loading="lazy" style="border-radius:24px;width:100%">
-        <div class="grid c2" style="margin-top:14px">
-          <div class="metric reveal"><b>1.9 MB</b><h3>Package</h3><p>Under RED’s 10 MB cap, offline.</p></div>
-          <div class="metric reveal d1"><b>0</b><h3>Audio files</h3><p>Ambient music synthesised in Web Audio; off by default.</p></div>
-        </div>
-        <p class="body reveal" style="margin-top:16px">Built for RED’s sandbox: one root index.html, no network, no storage, no accounts, only three native APIs (save image, write temp file, post note). The reply card is drawn on Canvas as a 1080×1620 JPEG for the photo album.</p>
-      </div>
-    </div>
-  </section>
-
-  <a class="next" href="/work/six-petal-bloom">
-    <small>Next project</small>
-    <strong><span class="grad">Six-Petal Bloom</span></strong>
-    <span class="link-arrow">View case study <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+  <a class="next-card" href="/work/six-petal-bloom" style="--next-bg:url('/assets/img/bloom/patterns.webp');--next-pos:50% 50%">
+    <span class="next-card-bg" aria-hidden="true"></span>
+    <span class="next-card-inner">
+      <span>
+        <small>Next project</small>
+        <strong><span class="grad">Six-Petal Bloom</span></strong>
+        <span class="next-sub" style="display:block">Grow a Song-style crackle glaze in six taps</span>
+        <span class="btn btn-primary">View case study <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+      </span>
+      <span class="next-card-media"><img src="/assets/img/bloom/patterns.webp" alt="" loading="lazy"></span>
+    </span>
   </a>
 </main>
 

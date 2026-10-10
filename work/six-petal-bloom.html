@@ -49,6 +49,31 @@
     </div>
   </header>
 
+  <!-- PLAY -->
+  <section class="section" id="play" style="--demo-glow:rgba(159,208,198,.18)">
+    <div class="wrap demo">
+      <div>
+        <span class="eyebrow reveal">Try it</span>
+        <h2 class="h-1 reveal d1"><span class="grad">Play the real build</span></h2>
+        <p class="lede reveal d2" style="margin-top:16px">Choose a vessel, tap six times inside the bowl, then rotate it and frame your poster. Sound on for the porcelain chimes.</p>
+        <div class="demo-actions reveal d3">
+          <a class="btn btn-primary" href="/play/six-petal-bloom/" target="_blank" rel="noopener">Open full screen <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+          <button class="btn btn-glass" data-demo-restart>Restart</button>
+        </div>
+        <p class="demo-note reveal d4">The exact offline package submitted to RED (Chinese-language UI). Saving and posting need the RED app, so the build falls back to screenshot mode here.</p>
+      </div>
+      <div class="demo-phone reveal-scale" data-src="/play/six-petal-bloom/" data-title="Six-Petal Bloom">
+        <span class="demo-island" aria-hidden="true"></span>
+        <div class="demo-screen">
+          <button class="demo-cover" aria-label="Play Six-Petal Bloom">
+            <img src="/assets/img/bloom/entry.webp" alt="">
+            <span class="demo-play"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M7 4.5v15l13-7.5z"/></svg>Tap to play</span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <!-- NAME -->
   <section class="section">
     <div class="wrap center">
@@ -59,23 +84,6 @@
         <div><b>Platform</b><span>RED mini-tool · offline HTML5</span></div>
         <div><b>Date</b><span>Aug 2026</span></div>
       </div>
-    </div>
-  </section>
-
-  <!-- PROBLEM -->
-  <section class="section">
-    <div class="wrap">
-      <div class="section-head center">
-        <span class="eyebrow reveal">Problem &amp; Opportunity</span>
-        <h2 class="h-1 reveal d1"><span class="grad">“I can’t draw — I’m afraid it’ll look ugly.”</span></h2>
-        <p class="lede reveal d2">RED users love Chinese aesthetics, but creative tools either hand them a blank canvas that gets messy, or a random generator whose result never feels like theirs.</p>
-      </div>
-      <div class="grid c3">
-        <div class="card pad reveal"><h3 class="h-4">Free canvases get messy</h3><p class="body" style="margin-top:10px">Open-ended drawing tools put the whole burden of taste on people who just want something beautiful.</p></div>
-        <div class="card pad reveal d1"><h3 class="h-4">Pure randomness feels “not mine”</h3><p class="body" style="margin-top:10px">One-tap generators look nice but leave no authorship — nothing to be proud of, nothing to share.</p></div>
-        <div class="card pad reveal d2"><h3 class="h-4">Opportunity</h3><p class="body" style="margin-top:10px">A finished, personal, aesthetically safe piece in 30–90 seconds — with saving and posting built into the main flow, not bolted on.</p></div>
-      </div>
-      <p class="body center reveal" style="margin-top:28px">Benchmarked against Silk, Snowprint, Fluid Simulation, Dunhuang Silk Scarf and Thisissand — none combine crystal growth on a cultural object with guided composition and native save/publish.</p>
     </div>
   </section>
 
@@ -93,27 +101,6 @@
         <div class="step reveal d2"><span class="step-n">3</span><h3>Bloom</h3><p>Top-down and still. Each tap reveals a wave of crackle shards.</p><div class="phone dark"><img src="/assets/img/bloom/tap1.webp" width="560" height="1212" alt="" loading="lazy"></div></div>
         <div class="step reveal d3"><span class="step-n">4</span><h3>Frame</h3><p>Rotate and pinch only unlock after the sixth tap — find the angle.</p><div class="phone dark"><img src="/assets/img/bloom/six.webp" width="560" height="1212" alt="" loading="lazy"></div></div>
         <div class="step reveal d4"><span class="step-n">5</span><h3>Compose</h3><p>A poster with a vertical inscription, generated title and a vermilion seal.</p><div class="phone dark"><img src="/assets/img/bloom/result-red.webp" width="620" height="1344" alt="" loading="lazy"></div></div>
-      </div>
-    </div>
-  </section>
-
-  <!-- VESSELS -->
-  <section class="section">
-    <div class="wrap split">
-      <div>
-        <span class="eyebrow reveal">Four Vessels</span>
-        <h2 class="h-1 reveal d1"><span class="grad">Song-style forms, built entirely in code</span></h2>
-        <p class="lede reveal d2" style="margin-top:16px">Inspired by Ru-ware sky-blue washers and Southern Song foliate dishes. Every form, glaze, crack and crystal is generated at runtime — the package ships zero bitmap vessels.</p>
-        <ul class="timeline reveal d3" style="margin-top:28px">
-          <li><b>Qingbai</b><p><strong>Bluish-white six-petal foliate washer</strong></p></li>
-          <li><b>Tianbai</b><p><strong>Sweet-white conical tea bowl</strong></p></li>
-          <li><b>Yuebai</b><p><strong>Moon-white round-bellied bowl</strong></p></li>
-          <li><b>Luanbai</b><p><strong>Egg-white straight-walled cup</strong></p></li>
-        </ul>
-      </div>
-      <div class="phones c2" style="display:grid;grid-template-columns:1fr 1fr;gap:clamp(14px,2vw,26px);align-items:end">
-        <div class="phone dark reveal"><img src="/assets/img/bloom/select.webp" width="560" height="1212" alt="Vessel selector with four rendered bowls" loading="lazy"></div>
-        <div class="phone dark reveal d1 lift"><img src="/assets/img/bloom/douli.webp" width="560" height="1212" alt="Conical tea bowl blooming in pine-pollen yellow" loading="lazy"></div>
       </div>
     </div>
   </section>
@@ -206,56 +193,34 @@
     </div>
   </section>
 
-  <!-- SYSTEM -->
-  <section class="section">
+  <!-- ENGINEERING -->
+  <section class="section tight">
     <div class="wrap">
       <div class="section-head center">
-        <span class="eyebrow reveal">Design System</span>
-        <h2 class="h-1 reveal d1"><span class="grad">Empty space matters more than filling it</span></h2>
-      </div>
-      <div class="swatches five">
-        <div class="swatch reveal" style="background:#07090a;color:#888;box-shadow:inset 0 0 0 1px rgba(255,255,255,.14)">Ink void<br>#07090A</div>
-        <div class="swatch reveal d1" style="background:#e9f2f3;color:#4a5556">Frost<br>#E9F2F3</div>
-        <div class="swatch reveal d2" style="background:#8fb2ac;color:#173330">Celadon<br>#8FB2AC</div>
-        <div class="swatch reveal d3" style="background:#b9dce8;color:#1d3a45">Ice<br>#B9DCE8</div>
-        <div class="swatch reveal d4" style="background:#8c3b32;color:#f3d9d4">Seal vermilion<br>#8C3B32</div>
-      </div>
-      <div class="grid c3" style="margin-top:24px">
-        <div class="metric reveal"><b>900 ms</b><h3>Per title character</h3><p>Calligraphy is written in, stroke by stroke.</p></div>
-        <div class="metric reveal d1"><b>620 ms</b><h3>Tap ripple</h3><p>A porcelain chime, synthesised in Web Audio.</p></div>
-        <div class="metric reveal d2"><b>260 ms</b><h3>Page transitions</h3><p>With reduced-motion fallbacks throughout.</p></div>
-      </div>
-      <p class="statement reveal" style="margin:clamp(40px,5vw,64px) auto 0;text-align:center">Self-check: with every word hidden, a screenshot should still read as <span class="dim">a porcelain vessel growing six crystals.</span></p>
-    </div>
-  </section>
-
-  <!-- ENGINEERING -->
-  <section class="section">
-    <div class="wrap">
-      <div class="section-head">
         <span class="eyebrow reveal">Engineering</span>
-        <h2 class="h-1 reveal d1"><span class="grad">Hand-written WebGL, fully offline</span></h2>
-        <p class="lede reveal d2" style="margin-top:14px">RED’s mini-tool sandbox allows no network, CDN, workers, WASM, ES modules or eval — so everything is classic scripts at the ZIP root, under a 10 MB cap.</p>
+        <h2 class="h-2 reveal d1"><span class="grad">Hand-written WebGL, fully offline</span></h2>
+        <p class="lede reveal d2">A custom lathe renderer, seeded Voronoi ice fields and a polar glaze texture — classic scripts only, under RED’s 10 MB sandbox.</p>
       </div>
-      <div class="grid c3">
-        <div class="card pad reveal"><h3 class="h-4">Lathe renderer</h3><p class="body" style="margin-top:8px">Custom WebGL revolve meshes from Catmull-Rom profiles, orbit camera and CPU ray-picking — with a Canvas 2D fallback.</p></div>
-        <div class="card pad reveal d1"><h3 class="h-4">Ice field</h3><p class="body" style="margin-top:8px">Two-layer Voronoi crackle on a seeded PRNG; one field shared by the session and the renderer.</p></div>
-        <div class="card pad reveal d2"><h3 class="h-4">Glaze texture</h3><p class="body" style="margin-top:8px">Polar-disc layout; finished crystals are baked, only dirty rectangles are re-uploaded each tap.</p></div>
-      </div>
-      <div class="grid c4" style="margin-top:14px">
+      <div class="grid c4">
         <div class="metric reveal"><b>64/64</b><h3>Tests passing</h3></div>
         <div class="metric reveal d1"><b>18 ms</b><h3>Max pointer handler</h3></div>
         <div class="metric reveal d2"><b>0</b><h3>Long tasks at 2× CPU throttle</h3></div>
         <div class="metric reveal d3"><b>0</b><h3>Bitmap vessels shipped</h3></div>
       </div>
-      <p class="body reveal" style="margin-top:28px">Cultural claims are sourced from museum collections and kept honest: the forms are “Song-style”, never presented as replicas.</p>
     </div>
   </section>
 
-  <a class="next" href="/work/parallel-mailbox">
-    <small>Next project</small>
-    <strong><span class="grad">Parallel Mailbox</span></strong>
-    <span class="link-arrow">View case study <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+  <a class="next-card" href="/work/woowoof" style="--next-bg:url('/assets/img/woowoof/hero.webp');--next-pos:20% 50%">
+    <span class="next-card-bg" aria-hidden="true"></span>
+    <span class="next-card-inner">
+      <span>
+        <small>Next project</small>
+        <strong><span class="grad">WooWoof</span></strong>
+        <span class="next-sub" style="display:block">AI pet health system — smart collar, dock and app</span>
+        <span class="btn btn-primary">View case study <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+      </span>
+      <span class="next-card-media"><img src="/assets/img/woowoof/hero.webp" alt="" loading="lazy"></span>
+    </span>
   </a>
 </main>
 

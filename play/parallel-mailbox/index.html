@@ -1,0 +1,29 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+  <meta name="description" content="收下今晚的信封，把 8 张照片装进去寄往平行宇宙，等一封按概率寄回的回信；不预测真实未来。">
+  <meta name="theme-color" content="#0d0f18">
+  <meta name="color-scheme" content="dark">
+  <title>平行信箱 v2 · Parallel Mailbox</title>
+  <link rel="stylesheet" href="./styles.css">
+</head>
+<body>
+  <main id="app" aria-live="off"></main>
+  <noscript>平行信箱需要浏览器启用 JavaScript；所有内容仍只在本机运行。</noscript>
+
+  <!-- 复用 release-v1 的确定性内核：题目、计分、路径戳、年份、回信文案 -->
+  <script src="./data.js" defer></script>
+  <script src="./engine.js" defer></script>
+  <script src="./asset-loader.js" defer></script>
+  <script src="./audio.js" defer></script>
+
+  <!-- release-v2 新增：稀有度抽取、粒子引擎、新流程 reducer、新渲染层 -->
+  <script src="./rarity.js" defer></script>
+  <script src="./fx.js" defer></script>
+  <script src="./share-card.js" defer></script>
+  <script src="./flow.js" defer></script>
+  <script src="./app.js" defer></script>
+</body>
+</html>

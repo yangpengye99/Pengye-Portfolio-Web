@@ -101,6 +101,25 @@
     cards.forEach((c) => c.addEventListener("click", () => { c.classList.add("open"); xpList.classList.add("unfolded"); }));
   }
 
+  // Live demos: load the build into the phone only when asked, scale 390x844 to fit
+  document.querySelectorAll(".demo-phone").forEach((ph) => {
+    const screen = ph.querySelector(".demo-screen");
+    const fit = () => screen.style.setProperty("--k", screen.clientWidth / 390);
+    fit();
+    window.addEventListener("resize", fit);
+    const start = () => {
+      const f = document.createElement("iframe");
+      f.src = ph.dataset.src;
+      f.title = ph.dataset.title || "Live demo";
+      f.allow = "autoplay";
+      screen.appendChild(f);
+      ph.querySelector(".demo-cover")?.remove();
+      fit();
+    };
+    ph.querySelector(".demo-cover")?.addEventListener("click", start);
+    ph.closest("section")?.querySelectorAll("[data-demo-restart]").forEach((b) => b.addEventListener("click", () => { screen.querySelector("iframe")?.remove(); start(); }));
+  });
+
   // Copy email
   const toast = document.querySelector(".toast");
   document.querySelectorAll("[data-copy]").forEach((btn) => {

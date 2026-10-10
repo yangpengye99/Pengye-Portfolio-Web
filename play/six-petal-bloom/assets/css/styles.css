@@ -1,0 +1,1410 @@
+/* 六出凝华：纯黑底国风界面。
+   黑场只为纹路与色彩渐变让路；控件是细线的、克制的，不与器物争。 */
+
+:root {
+  --ink-void: #000000;
+  --ink-deep: #0B0E0F;
+  --ink-raise: rgba(226, 240, 242, 0.04);
+  --line-hair: rgba(214, 228, 230, 0.14);
+  --line-soft: rgba(214, 228, 230, 0.30);
+  --line-strong: rgba(233, 242, 243, 0.62);
+  --frost: #EDF3F4;
+  --frost-dim: #97A8AB;
+  --frost-faint: #5D6D70;
+  --ice: #B9DCE8;
+  --seal: #8C3B32;
+  --progress-edge: rgba(214, 228, 230, 0.58);
+  --progress-fill: rgba(185, 220, 232, 0.12);
+  --progress-glow: rgba(185, 220, 232, 0.24);
+  --progress-active-edge: rgba(237, 247, 249, 0.92);
+
+  --brush: "STKaiti", "KaiTi", "Kaiti SC", "TW-Kai", "BiauKai", "Noto Serif SC", "Songti SC", "SimSun", serif;
+  --sans: system-ui, -apple-system, "PingFang SC", "Microsoft YaHei", "Noto Sans SC", sans-serif;
+
+  --safe-top: env(safe-area-inset-top, 0px);
+  --safe-bottom: env(safe-area-inset-bottom, 0px);
+  --safe-left: env(safe-area-inset-left, 0px);
+  --safe-right: env(safe-area-inset-right, 0px);
+  /* 预留给小红书容器按钮与系统状态栏的空间。 */
+  --top-reserve: 80px;
+
+  --ease-out: cubic-bezier(0.22, 0.61, 0.36, 1);
+}
+
+* { box-sizing: border-box; }
+
+/* display 值会覆盖 UA 的 [hidden]，统一收口。 */
+[hidden] { display: none !important; }
+
+html {
+  touch-action: manipulation;
+}
+
+html, body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  background: var(--ink-void);
+  color: var(--frost);
+  font-family: var(--sans);
+  -webkit-font-smoothing: antialiased;
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  user-select: none;
+  overscroll-behavior: none;
+}
+
+body { overflow: hidden; }
+
+img,
+canvas,
+svg {
+  -webkit-user-drag: none;
+  user-select: none;
+}
+
+button {
+  font: inherit;
+  color: inherit;
+  border: 0;
+  background: none;
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+}
+
+:focus-visible {
+  outline: 1px solid var(--ice);
+  outline-offset: 3px;
+}
+
+/* 设计基准机 iPhone 15 Pro Max：430×932。
+   界面按此尺寸排版，再整体等比缩放居中；框外的部分一律以黑色蔓延填满。
+   --fit 由 app.js 按视口实时计算。 */
+.app-shell {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 430px;
+  height: 932px;
+  transform: translate(-50%, -50%) scale(var(--fit, 1));
+  transform-origin: center center;
+  overflow: hidden;
+  background: var(--ink-void);
+}
+
+/* 环境粒子层：冰蓝微光垫在场景之下，只在择器与凝花界面运行。 */
+.ambient-canvas {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+
+/* 成章页背景纹：以作品用色画的一簇静态冰纹，垫在器物之后，若隐若现。 */
+.result-bg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+
+.scene {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  padding:
+    calc(var(--safe-top) + var(--top-reserve))
+    calc(var(--safe-right) + 22px)
+    calc(var(--safe-bottom) + 20px)
+    calc(var(--safe-left) + 22px);
+  opacity: 0;
+  transform: translateY(8px);
+  transition: opacity 260ms var(--ease-out), transform 260ms var(--ease-out);
+}
+
+.scene.is-active {
+  opacity: 1;
+  transform: none;
+}
+
+.scene[hidden] { display: none; }
+
+/* ---------- 书法题名 ---------- */
+
+.brush-title {
+  margin: 0;
+  font-family: var(--brush);
+  font-weight: 500;
+  font-size: clamp(50px, 13.5vw, 70px);
+  line-height: 1.12;
+  letter-spacing: 0.14em;
+  color: var(--frost);
+  text-shadow: 0 0 22px rgba(150, 200, 210, 0.20), 0 1px 0 rgba(0, 0, 0, 0.6);
+}
+
+/* 竖排列距与错落：注文第一列紧随题右，第二列更低一段。 */
+.entry-copy .entry-gloss { margin-left: 16px; margin-top: 34px; }
+.entry-copy .entry-gloss + .entry-gloss { margin-left: 10px; margin-top: 96px; }
+
+/* 题末红印：印面横排四字，读序右上→右下→左上→左下。 */
+.entry-seal {
+  writing-mode: horizontal-tb;
+  display: inline-grid;
+  grid-template-columns: 1fr 1fr;
+  place-items: center;
+  width: 30px;
+  height: 30px;
+  /* 竖排列中 inline 方向是「向下」：印与题末的间距用 inline-start。 */
+  margin-inline-start: 18px;
+  margin-block-start: 0;
+  background: var(--seal);
+  color: #F6E6E1;
+  font-size: 11px;
+  line-height: 1;
+  letter-spacing: 0;
+  text-indent: 0;
+  text-shadow: none;
+  box-shadow: inset 0 0 0 1px rgba(255, 232, 226, 0.25);
+  opacity: 0;
+  animation: fade-rise 260ms var(--ease-out) 180ms forwards;
+}
+
+.entry-seal i { font-style: normal; }
+
+/* 逐字落笔：自上而下显影，模拟运笔次序。 */
+.brush-char {
+  display: inline-block;
+  clip-path: inset(0 0 100% 0);
+  opacity: 0;
+  animation: brush-stroke 320ms var(--ease-out) forwards;
+}
+
+.brush-char:nth-child(1) { animation-delay: 40ms; }
+.brush-char:nth-child(2) { animation-delay: 90ms; }
+.brush-char:nth-child(3) { animation-delay: 140ms; }
+.brush-char:nth-child(4) { animation-delay: 190ms; }
+
+@keyframes brush-stroke {
+  from { clip-path: inset(0 0 100% 0); opacity: 0; }
+  20%  { opacity: 1; }
+  to   { clip-path: inset(0 0 0 0); opacity: 1; }
+}
+
+.brush-heading {
+  margin: 0;
+  font-family: var(--brush);
+  font-weight: 500;
+  font-size: 28px;
+  letter-spacing: 0.12em;
+  color: var(--frost);
+}
+
+/* ---------- 通用控件：细线、克制 ---------- */
+
+.scene-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  min-height: 34px;
+  font-size: 14px;
+  color: var(--frost-dim);
+}
+
+.scene-step {
+  font-family: var(--brush);
+  font-size: 18px;
+  letter-spacing: 0.24em;
+  color: var(--frost);
+}
+
+.scene-step-index {
+  font-family: var(--brush);
+  font-size: 14px;
+  letter-spacing: 0.16em;
+  color: var(--frost-faint);
+}
+
+.primary-action {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 52px;
+  padding: 0 46px;
+  font-family: var(--brush);
+  font-size: 18px;
+  letter-spacing: 0.34em;
+  text-indent: 0.34em;
+  color: var(--frost);
+  background: transparent;
+  border: 1px solid var(--line-soft);
+  border-radius: 0;
+  transition: border-color 220ms var(--ease-out), background 220ms var(--ease-out);
+}
+
+.primary-action:hover {
+  border-color: var(--line-strong);
+  background: rgba(233, 242, 243, 0.05);
+}
+
+.primary-action:active { transform: translateY(1px); }
+.primary-action[disabled] { opacity: 0.4; }
+
+.text-action {
+  /* iOS 人机指南的最小触控目标为 44pt。 */
+  min-height: 44px;
+  padding: 0 10px;
+  font-size: 14px;
+  letter-spacing: 0.10em;
+  color: var(--frost-dim);
+  transition: color 180ms var(--ease-out);
+}
+
+.text-action:hover { color: var(--frost); }
+.text-action[disabled] { opacity: 0.32; }
+
+.icon-back-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex: 0 0 50px;
+  width: 50px;
+  height: 50px;
+  padding: 0;
+  color: var(--frost-dim);
+  background: rgba(226, 240, 242, 0.025);
+  border: 1px solid var(--line-soft);
+  border-radius: 50%;
+  transition: color 180ms var(--ease-out), border-color 180ms var(--ease-out), background 180ms var(--ease-out);
+}
+
+.icon-back-button svg {
+  width: 21px;
+  height: 21px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.7;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.icon-back-button:active {
+  color: var(--frost);
+  border-color: var(--line-strong);
+  background: rgba(226, 240, 242, 0.08);
+}
+
+.header-actions {
+  display: flex;
+  gap: 2px;
+}
+
+.toast {
+  position: absolute;
+  left: 50%;
+  bottom: calc(var(--safe-bottom) + 176px);
+  transform: translateX(-50%);
+  margin: 0;
+  padding: 10px 18px;
+  max-width: 78vw;
+  font-size: 14px;
+  text-align: center;
+  color: var(--frost);
+  background: rgba(8, 11, 12, 0.94);
+  border: 1px solid var(--line-hair);
+  z-index: 40;
+}
+
+/* ---------- 一屏：入境 ---------- */
+
+.scene-entry {
+  justify-content: flex-end;
+  align-items: center;
+}
+
+.entry-canvas {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+
+/* 三个书法图槽位：题字 / 注文 / 提示句。各自独立探测——
+   放了图就用图，没放就回落到代码版楷体字，互不影响。
+   mix-blend-mode: screen 让图上的纯黑变透明，背后的结晶动画从笔画间透出来，
+   所以透明 PNG 与黑底裁图都能直接用。 */
+/* 三张图均为透明底 PNG，直接叠放即可，不需要混合模式——
+   混合模式会让这块区域每帧随背后动画重新合成，在手机上白费电。 */
+.brush-art,
+.gloss-art,
+.hint-art {
+  display: none;
+}
+
+/* 题字：竖排首列，与红印同在一个行内流里，所以印仍落在字末。 */
+.app-shell.has-art-title .brush-art {
+  display: inline-block;
+  vertical-align: top;
+  height: min(40vh, 360px);
+  width: auto;
+}
+
+.app-shell.has-art-title .brush-char { display: none; }
+
+.app-shell.has-art-title .brush-title {
+  letter-spacing: 0;
+  text-shadow: none;
+}
+
+/* 注文：题字右侧的第二列。 */
+.app-shell.has-art-gloss .gloss-art {
+  display: block;
+  height: min(31vh, 280px);
+  width: auto;
+  /* 裁掉透明留白后图已贴边，列距要显式给足。 */
+  margin-left: 26px;
+  margin-top: 34px;
+}
+
+.app-shell.has-art-gloss .entry-gloss { display: none; }
+
+/* 提示句：按钮下方横排。 */
+.app-shell.has-art-hint .hint-art {
+  display: block;
+  width: min(74vw, 330px);
+  height: auto;
+  margin-top: 14px;
+}
+
+.app-shell.has-art-hint .entry-hint { display: none; }
+
+.entry-copy {
+  position: relative;
+  z-index: 2;
+}
+
+.entry-copy {
+  /* 参考版式：大题竖排在左上，注文两列随其右，红印收在题末。 */
+  position: absolute;
+  left: calc(var(--safe-left) + 7vw);
+  top: calc(var(--safe-top) + 70px);
+  writing-mode: vertical-lr;
+  padding: 26px 30px 40px 22px;
+}
+
+/* 暗场衬底只服务代码版楷体字（对比不足时才需要）；
+   真书法图自带高对比，不加衬底，避免出现一块可见的黑方框。 */
+.app-shell:not(.has-art-title) .entry-copy {
+  background: radial-gradient(130% 92% at 44% 46%, rgba(0, 0, 0, 0.90), rgba(0, 0, 0, 0) 76%);
+}
+
+.entry-gloss {
+  margin: 6px 0 0;
+  font-family: var(--brush);
+  font-size: 15px;
+  letter-spacing: 0.30em;
+  color: var(--frost-dim);
+  opacity: 0;
+  animation: fade-rise 260ms var(--ease-out) 160ms forwards;
+}
+
+/* 整屏轻触进入：透明按钮铺满全屏，视觉提示交给底部呼吸句。 */
+.entry-touch {
+  position: absolute;
+  inset: 0;
+  z-index: 4;
+  background: transparent;
+  border: 0;
+}
+
+.entry-touch:focus-visible { outline-offset: -6px; }
+
+.entry-action {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-bottom: 5vh;
+  opacity: 0;
+  animation: fade-rise 260ms var(--ease-out) 200ms forwards;
+  pointer-events: none;
+}
+
+.entry-invite {
+  margin: 0 0 10px;
+  font-family: var(--brush);
+  font-size: 16px;
+  letter-spacing: 0.5em;
+  text-indent: 0.5em;
+  color: var(--frost-dim);
+  animation: invite-breathe 2800ms ease-in-out infinite;
+}
+
+@keyframes invite-breathe {
+  0%, 100% { opacity: 0.45; }
+  50% { opacity: 1; }
+}
+
+.entry-hint {
+  margin: 14px 0 0;
+  font-family: var(--brush);
+  font-size: 13px;
+  letter-spacing: 0.30em;
+  color: var(--frost-faint);
+}
+
+@keyframes fade-rise {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: none; }
+}
+
+/* ---------- 二屏：择器 ---------- */
+
+.scene-select {
+  padding-right: calc(var(--safe-right) + 24px);
+  padding-bottom: calc(var(--safe-bottom) + 24px);
+  padding-left: calc(var(--safe-left) + 24px);
+}
+
+.select-header {
+  display: grid;
+  grid-template-columns: 50px minmax(0, 1fr) 50px;
+  column-gap: 12px;
+  align-items: center;
+  min-height: 50px;
+  margin-bottom: 16px;
+}
+
+.select-header .icon-back-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  justify-self: start;
+  align-self: center;
+}
+
+.select-intro {
+  margin: 0;
+  font-size: 14px;
+  line-height: 22px;
+  color: var(--frost-dim);
+  text-align: center;
+  align-self: center;
+  justify-self: center;
+  white-space: nowrap;
+}
+
+.archive-button {
+  position: relative;
+  align-self: center;
+  justify-self: end;
+}
+
+.archive-count {
+  position: absolute;
+  top: -4px;
+  right: -4px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 18px;
+  height: 18px;
+  padding: 0 4px;
+  font-family: var(--sans);
+  font-size: 10px;
+  letter-spacing: 0;
+  color: #071012;
+  background: var(--ice);
+  border: 1px solid #000000;
+  border-radius: 999px;
+}
+
+.vessel-list {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 16px;
+  align-content: start;
+}
+
+.vessel-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-width: 0;
+  gap: 8px;
+  padding: 12px 10px 16px;
+  background: linear-gradient(180deg, rgba(226, 240, 242, 0.025), rgba(226, 240, 242, 0.045));
+  border: 1px solid rgba(214, 228, 230, 0.07);
+  transition: border-color 200ms var(--ease-out), background 200ms var(--ease-out);
+}
+
+.vessel-card.is-selected {
+  background: rgba(185, 220, 232, 0.065);
+  border-color: var(--line-strong);
+}
+
+.vessel-card:active { background: rgba(185, 220, 232, 0.085); }
+
+.vessel-card-figure {
+  display: block;
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  overflow: hidden;
+}
+
+.vessel-card-figure img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  display: block;
+}
+
+.vessel-card-figure.is-flat {
+  background: radial-gradient(60% 42% at 50% 52%, rgba(235, 240, 238, 0.85), rgba(10, 14, 14, 0.9) 78%);
+  border-radius: 50%;
+}
+
+.vessel-card-name {
+  font-family: var(--brush);
+  font-size: 18px;
+  letter-spacing: 0.14em;
+  color: var(--frost);
+}
+
+/* 器名书法图：加载成功时替代文字器名。 */
+.vessel-card-name-art {
+  display: block;
+  height: 26px;
+  width: auto;
+  max-width: 92%;
+  object-fit: contain;
+}
+
+.vessel-card-glaze {
+  font-size: 12px;
+  letter-spacing: 0.14em;
+  color: var(--frost-faint);
+}
+
+.select-detail {
+  display: grid;
+  grid-template-columns: 32px minmax(0, 1fr);
+  align-items: center;
+  column-gap: 12px;
+  min-height: 56px;
+  margin-bottom: 20px;
+  padding: 12px 0 14px;
+  border-bottom: 1px solid var(--line-hair);
+}
+
+.select-detail::before {
+  content: '';
+  display: block;
+  width: 32px;
+  height: 1px;
+  background: var(--line-soft);
+}
+
+.select-name {
+  margin: 0;
+  font-family: var(--brush);
+  font-size: 18px;
+  line-height: 1.5;
+  letter-spacing: 0.12em;
+  color: var(--frost);
+}
+
+.select-action {
+  display: flex;
+  justify-content: center;
+  margin-top: auto;
+  padding: 32px 0 4px;
+}
+
+.select-action .primary-action {
+  min-width: 184px;
+  min-height: 56px;
+}
+
+/* ---------- 往作：截图仓库 ---------- */
+
+.scene-archive {
+  padding-right: calc(var(--safe-right) + 22px);
+  padding-bottom: calc(var(--safe-bottom) + 20px);
+  padding-left: calc(var(--safe-left) + 22px);
+}
+
+.archive-header {
+  justify-content: flex-start;
+  gap: 18px;
+  margin-bottom: 24px;
+}
+
+.archive-heading h2,
+.archive-heading p {
+  margin: 0;
+}
+
+.archive-heading h2 {
+  font-family: var(--brush);
+  font-size: 22px;
+  font-weight: 500;
+  letter-spacing: 0.18em;
+  color: var(--frost);
+}
+
+.archive-heading p {
+  margin-top: 4px;
+  font-family: var(--brush);
+  font-size: 12px;
+  letter-spacing: 0.24em;
+  color: var(--frost-faint);
+}
+
+.archive-list {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 14px;
+  flex: 1;
+  min-height: 0;
+  padding: 1px 1px 24px;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+  overscroll-behavior-y: contain;
+}
+
+.archive-card {
+  position: relative;
+  display: block;
+  width: 100%;
+  aspect-ratio: 430 / 932;
+  padding: 4px;
+  overflow: hidden;
+  background: #000;
+  border: 1px solid rgba(237, 243, 244, 0.74);
+}
+
+.archive-card img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.archive-card:active { border-color: #FFFFFF; }
+
+.archive-empty {
+  align-self: center;
+  margin: auto 0;
+  font-family: var(--brush);
+  font-size: 15px;
+  line-height: 1.8;
+  letter-spacing: 0.14em;
+  text-align: center;
+  color: var(--frost-faint);
+}
+
+.archive-viewer {
+  position: absolute;
+  inset: 0;
+  z-index: 60;
+  overflow: hidden;
+  background: #000;
+}
+
+.archive-viewer-image {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.archive-viewer-back {
+  position: absolute;
+  top: calc(var(--safe-top) + var(--top-reserve));
+  left: calc(var(--safe-left) + 22px);
+  color: var(--frost);
+  background: rgba(0, 0, 0, 0.58);
+}
+
+.archive-viewer-actions {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: calc(var(--safe-bottom) + 24px);
+  display: flex;
+  justify-content: center;
+}
+
+.archive-viewer-actions .primary-action {
+  min-width: 178px;
+  background: rgba(0, 0, 0, 0.62);
+}
+
+/* ---------- 三屏：凝花与取景 ---------- */
+
+.create-header {
+  position: relative;
+  align-items: flex-start;
+  min-height: 96px;
+  z-index: 2;
+}
+
+.create-title-group {
+  position: absolute;
+  top: 72px;
+  left: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  transform: none;
+  pointer-events: none;
+}
+
+/* 凝花页顶部书法字：无图时该区域留白。 */
+.create-title-art {
+  display: none;
+  height: 136px;
+  width: auto;
+}
+
+.app-shell.has-art-create .create-title-art { display: block; }
+
+.vessel-stage {
+  position: relative;
+  flex: 1;
+  min-height: 0;
+  margin: 4px 0;
+}
+
+.vessel-canvas {
+  display: block;
+  width: 100%;
+  height: 100%;
+  touch-action: none;
+}
+
+[data-phase="FRAMING"] .vessel-canvas { cursor: grab; }
+[data-phase="FRAMING"] .vessel-canvas:active { cursor: grabbing; }
+
+.tap-feedback {
+  position: absolute;
+  width: 14px;
+  height: 14px;
+  margin: -7px 0 0 -7px;
+  border: 1px solid var(--ice);
+  border-radius: 50%;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.tap-feedback.is-visible { animation: tap-ring 520ms var(--ease-out) forwards; }
+
+@keyframes tap-ring {
+  from { opacity: 0.9; transform: scale(0.4); }
+  to { opacity: 0; transform: scale(3.2); }
+}
+
+/* 粒子特效层：铺满器物区，纯展示。 */
+.fx-canvas {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+
+/* 「凝结中」：点击后的生成提示，呼吸闪动。 */
+.working-hint {
+  position: absolute;
+  left: 50%;
+  bottom: 30px;
+  transform: translateX(-50%);
+  margin: 0;
+  font-family: var(--brush);
+  font-size: 17px;
+  letter-spacing: 0.42em;
+  text-indent: 0.42em;
+  color: var(--ice);
+  text-shadow: 0 0 12px rgba(185, 220, 232, 0.5);
+  pointer-events: none;
+  animation: invite-breathe 1100ms ease-in-out infinite;
+}
+
+.gesture-hint {
+  position: absolute;
+  left: 50%;
+  bottom: 4px;
+  transform: translateX(-50%);
+  font-family: var(--brush);
+  font-size: 16px;
+  line-height: 1.4;
+  letter-spacing: 0.26em;
+  color: var(--frost-dim);
+  white-space: nowrap;
+  text-align: center;
+  pointer-events: none;
+}
+
+.create-guidance {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  padding: 4px 0 8px;
+}
+
+#create-hint {
+  margin: 0;
+  font-family: var(--brush);
+  font-size: 19px;
+  letter-spacing: 0.14em;
+  color: var(--frost-dim);
+  transition: opacity 400ms var(--ease-out);
+}
+
+.progress-dots {
+  display: flex;
+  gap: 12px;
+  padding: 2px 0;
+}
+
+.progress-dots span {
+  width: 10px;
+  height: 10px;
+  border: 1px solid var(--progress-edge);
+  border-radius: 50%;
+  background: var(--progress-fill);
+  box-shadow: 0 0 5px var(--progress-glow);
+  transition: background 240ms var(--ease-out), border-color 240ms var(--ease-out), box-shadow 240ms var(--ease-out);
+}
+
+.progress-dots span.is-filled {
+  background: var(--dot-color, var(--ice));
+  border-color: var(--progress-active-edge);
+  box-shadow: 0 0 4px rgba(237, 247, 249, 0.74), 0 0 13px var(--dot-color, var(--ice));
+}
+
+.crystal-color {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin: 0;
+  font-family: var(--brush);
+  font-size: 14px;
+  line-height: 1.3;
+  letter-spacing: 0.16em;
+  color: var(--frost);
+  white-space: nowrap;
+}
+
+.crystal-color::before {
+  content: "";
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  background: var(--swatch, var(--ice));
+  box-shadow: 0 0 8px var(--swatch, var(--ice));
+}
+
+.create-action-zone {
+  display: grid;
+  grid-template-areas: "action";
+  flex: 0 0 112px;
+  min-height: 112px;
+}
+
+.create-action-zone > .finish-zone,
+.create-action-zone > .frame-bar {
+  grid-area: action;
+}
+
+.finish-zone {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  grid-template-rows: 20px 22px 54px;
+  align-items: center;
+  justify-items: center;
+  row-gap: 8px;
+  width: min(100%, 320px);
+  min-height: 0;
+  margin: 0 auto;
+}
+
+.finish-zone .crystal-color {
+  grid-column: 1;
+  grid-row: 1;
+}
+
+.finish-zone #finish-hint {
+  grid-column: 1;
+  grid-row: 2;
+}
+
+.finish-zone #finish-button {
+  grid-column: 1;
+  grid-row: 3;
+  justify-self: center;
+  min-width: 196px;
+}
+
+#finish-hint {
+  margin: 0;
+  font-family: var(--brush);
+  font-size: 16px;
+  line-height: 1.3;
+  letter-spacing: 0.18em;
+  color: var(--frost-dim);
+  text-align: center;
+  white-space: nowrap;
+}
+
+/* 取景条：与收笔区同位置切换。 */
+.frame-bar {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 12px;
+  min-height: 0;
+  height: 100%;
+  padding-bottom: 1px;
+}
+
+.frame-bar p {
+  margin: 0;
+  font-family: var(--brush);
+  font-size: 19px;
+  letter-spacing: 0.20em;
+  color: var(--frost);
+}
+
+.frame-actions {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.finalizing-layer {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 26px;
+  background: rgba(0, 0, 0, 0.82);
+  z-index: 30;
+}
+
+.finalizing-layer p {
+  margin: 0;
+  font-family: var(--brush);
+  font-size: 17px;
+  letter-spacing: 0.28em;
+  color: var(--frost);
+}
+
+.finalizing-ring {
+  width: 68px;
+  height: 68px;
+  border: 1px solid var(--line-soft);
+  border-top-color: var(--ice);
+  border-radius: 50%;
+  animation: ring-turn 1500ms linear infinite;
+}
+
+@keyframes ring-turn { to { transform: rotate(360deg); } }
+
+/* ---------- 沉浸式制作与成章：画布占满视口，控件只作安全区浮层 ---------- */
+
+.app-shell[data-phase="READY"],
+.app-shell[data-phase="GROWING"],
+.app-shell[data-phase="FRAMING"],
+.app-shell[data-phase="RESULT"] {
+  position: fixed;
+  inset: 0;
+  width: 100vw;
+  height: 100vh;
+  height: 100dvh;
+  transform: none;
+  --top-reserve: 80px;
+}
+
+[data-phase="READY"] .scene-create,
+[data-phase="GROWING"] .scene-create,
+[data-phase="FRAMING"] .scene-create,
+[data-phase="RESULT"] .scene-create {
+  padding: 0;
+}
+
+[data-phase="READY"] .vessel-stage,
+[data-phase="GROWING"] .vessel-stage,
+[data-phase="FRAMING"] .vessel-stage,
+[data-phase="RESULT"] .vessel-stage {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  margin: 0;
+}
+
+[data-phase="READY"] .create-header,
+[data-phase="GROWING"] .create-header,
+[data-phase="FRAMING"] .create-header {
+  position: absolute;
+  top: calc(var(--safe-top) + var(--top-reserve));
+  left: calc(var(--safe-left) + 22px);
+  right: calc(var(--safe-right) + 22px);
+  z-index: 10;
+  pointer-events: none;
+}
+
+[data-phase="READY"] .create-header button,
+[data-phase="GROWING"] .create-header button,
+[data-phase="FRAMING"] .create-header button {
+  pointer-events: auto;
+}
+
+[data-phase="READY"] .create-guidance,
+[data-phase="GROWING"] .create-guidance {
+  position: absolute;
+  left: calc(var(--safe-left) + 22px);
+  right: calc(var(--safe-right) + 22px);
+  bottom: calc(var(--safe-bottom) + 142px);
+  z-index: 10;
+  pointer-events: none;
+}
+
+[data-phase="READY"] .create-action-zone,
+[data-phase="GROWING"] .create-action-zone,
+[data-phase="FRAMING"] .create-action-zone {
+  position: absolute;
+  left: calc(var(--safe-left) + 22px);
+  right: calc(var(--safe-right) + 22px);
+  bottom: calc(var(--safe-bottom) + 16px);
+  z-index: 10;
+  pointer-events: none;
+}
+
+[data-phase="READY"] .create-action-zone button,
+[data-phase="GROWING"] .create-action-zone button,
+[data-phase="FRAMING"] .create-action-zone button {
+  pointer-events: auto;
+}
+
+[data-phase="FRAMING"] .create-guidance {
+  display: none;
+}
+
+[data-phase="FRAMING"] .header-actions {
+  display: none;
+}
+
+[data-phase="FRAMING"] .gesture-hint {
+  bottom: calc(var(--safe-bottom) + 142px);
+}
+
+[data-phase="GROWING"] .working-hint {
+  bottom: calc(var(--safe-bottom) + 210px);
+}
+
+/* ---------- 成章浮层：题款、器物、操作各占一段安全区 ---------- */
+
+[data-phase="RESULT"] .create-header,
+[data-phase="RESULT"] .create-guidance,
+[data-phase="RESULT"] .create-action-zone,
+[data-phase="RESULT"] .finish-zone { display: none !important; }
+
+/* 器物铺满整屏为背景：无任何限位框，拖动旋转、双指移动与缩放都不受约束。 */
+[data-phase="RESULT"] .vessel-stage {
+  position: absolute;
+  inset: 0;
+  margin: 0;
+}
+
+.result-overlay {
+  position: absolute;
+  inset: 0;
+  z-index: 5;
+  pointer-events: none;
+}
+
+/* 左上题名与题末朱印组成一条明确的落款轴。 */
+.result-mark {
+  position: absolute;
+  top: calc(var(--safe-top) + var(--top-reserve) + 6px);
+  left: calc(var(--safe-left) + 52px);
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.result-watermark {
+  height: 172px;
+  width: auto;
+  opacity: 1;
+  filter: brightness(0) invert(1);
+  pointer-events: none;
+}
+
+/* 两列事实题款紧随题名右侧；除此之外不在顶部增加说明。 */
+.result-inscription {
+  position: absolute;
+  top: calc(var(--safe-top) + var(--top-reserve) + 8px);
+  left: calc(var(--safe-left) + 128px);
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+}
+
+.result-small {
+  writing-mode: vertical-rl;
+  margin: 0;
+  font-family: var(--brush);
+  font-size: 14px;
+  line-height: 1.35;
+  letter-spacing: 0.22em;
+  color: var(--frost-dim);
+  text-shadow: 0 1px 6px rgba(0, 0, 0, 0.9);
+}
+
+.result-small:nth-of-type(1) { color: var(--frost); }
+.result-small:nth-of-type(2) { font-size: 12px; color: var(--frost-faint); }
+
+.result-seal {
+  width: 34px;
+  height: 34px;
+  margin: 18px 0 0 11px;
+  font-size: 12px;
+  opacity: 0.92;
+  animation: none;
+}
+
+.result-bar {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: calc(var(--safe-bottom) + 26px);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  pointer-events: auto;
+}
+
+.result-bar .primary-action { background: rgba(0, 0, 0, 0.35); }
+
+/* 成章页严格复刻题款参考，不再叠加操作说明文字。 */
+[data-phase="RESULT"] .gesture-hint {
+  display: none;
+}
+
+/* ---------- 四屏：成章（旧静态海报页，已由浮层取代） ---------- */
+
+.scene-result { gap: 12px; }
+
+.result-title-group {
+  text-align: center;
+  margin-top: 2px;
+}
+
+.result-title-group .brush-heading { font-size: 25px; }
+
+#result-meta {
+  margin: 8px 0 0;
+  font-size: 12px;
+  letter-spacing: 0.10em;
+  color: var(--frost-faint);
+}
+
+.poster-frame {
+  flex: 1;
+  min-height: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.poster-frame canvas {
+  max-width: 100%;
+  max-height: 100%;
+  aspect-ratio: 3 / 4;
+  object-fit: contain;
+  box-shadow: 0 22px 64px rgba(0, 0, 0, 0.8);
+}
+
+.result-actions {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+}
+
+.secondary-actions {
+  display: flex;
+  gap: 6px;
+}
+
+.clean-exit {
+  position: absolute;
+  right: calc(var(--safe-right) + 18px);
+  bottom: calc(var(--safe-bottom) + 18px);
+  padding: 8px 16px;
+  font-size: 13px;
+  color: var(--frost-dim);
+  background: rgba(8, 11, 12, 0.92);
+  border: 1px solid var(--line-hair);
+  z-index: 41;
+}
+
+/* 清赏：只留作品本身。 */
+.app-shell.is-clean .scene-header,
+.app-shell.is-clean .result-title-group,
+.app-shell.is-clean .result-actions { opacity: 0; pointer-events: none; }
+
+.app-shell.is-clean .poster-frame { flex: 1; }
+
+/* ---------- 对话框 ---------- */
+
+.dialog-backdrop {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+  background: rgba(0, 0, 0, 0.84);
+  z-index: 50;
+}
+
+.dialog-panel {
+  width: min(340px, 100%);
+  padding: 26px 24px 20px;
+  text-align: center;
+  background: var(--ink-deep);
+  border: 1px solid var(--line-hair);
+}
+
+.dialog-panel p {
+  margin: 12px 0 22px;
+  font-size: 14px;
+  line-height: 1.7;
+  color: var(--frost-dim);
+}
+
+.dialog-actions {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+}
+
+.dialog-actions .primary-action {
+  min-height: 44px;
+  padding: 0 24px;
+  font-size: 16px;
+}
+
+/* ---------- 适配 ---------- */
+
+@media (min-width: 720px) {
+  .scene { padding-inline: max(8vw, 32px); }
+  .brush-title { font-size: clamp(56px, 6vw, 80px); }
+  .vessel-list { grid-template-columns: repeat(4, 1fr); }
+}
+
+@media (orientation: landscape) and (max-height: 560px) {
+  .scene { padding-top: calc(var(--safe-top) + 24px); }
+  .entry-copy { padding-top: 1vh; }
+  .brush-title { font-size: clamp(34px, 8vh, 48px); }
+  .entry-action { padding-bottom: 1vh; }
+  .vessel-list { grid-template-columns: repeat(4, 1fr); }
+  .select-copy { margin: 10px 0; }
+
+  .app-shell[data-phase="READY"],
+  .app-shell[data-phase="GROWING"],
+  .app-shell[data-phase="FRAMING"],
+  .app-shell[data-phase="RESULT"] {
+    --top-reserve: 24px;
+  }
+
+  [data-phase="READY"] .create-title-group,
+  [data-phase="GROWING"] .create-title-group,
+  [data-phase="FRAMING"] .create-title-group {
+    top: 52px;
+  }
+
+  [data-phase="READY"] .create-title-art,
+  [data-phase="GROWING"] .create-title-art,
+  [data-phase="FRAMING"] .create-title-art {
+    height: 96px;
+  }
+
+  [data-phase="READY"] .create-guidance,
+  [data-phase="GROWING"] .create-guidance {
+    bottom: calc(var(--safe-bottom) + 126px);
+  }
+
+  [data-phase="READY"] .create-action-zone,
+  [data-phase="GROWING"] .create-action-zone,
+  [data-phase="FRAMING"] .create-action-zone {
+    bottom: calc(var(--safe-bottom) + 8px);
+  }
+
+  [data-phase="FRAMING"] .gesture-hint {
+    bottom: calc(var(--safe-bottom) + 126px);
+  }
+
+  [data-phase="GROWING"] .working-hint {
+    bottom: calc(var(--safe-bottom) + 180px);
+  }
+
+  .app-shell[data-phase="RESULT"] .result-watermark {
+    height: 120px;
+  }
+
+  .app-shell[data-phase="RESULT"] .result-mark {
+    left: max(calc(var(--safe-left) + 30px), calc(5vw + 1px));
+  }
+
+  .app-shell[data-phase="RESULT"] .result-inscription {
+    left: max(calc(var(--safe-left) + 112px), calc(16vw + 1px));
+    height: 200px;
+    max-height: 200px;
+  }
+
+  .app-shell[data-phase="RESULT"] .result-bar {
+    bottom: calc(var(--safe-bottom) + 12px);
+  }
+
+  .app-shell[data-phase="RESULT"] .gesture-hint {
+    bottom: calc(var(--safe-bottom) + 126px);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .scene,
+  .primary-action,
+  .text-action,
+  #create-hint,
+  .progress-dots span { transition-duration: 120ms; }
+
+  .brush-char,
+  .entry-gloss,
+  .entry-seal,
+  .entry-action {
+    animation: none;
+    opacity: 1;
+    clip-path: none;
+    transform: none;
+  }
+
+  .tap-feedback.is-visible { animation-duration: 200ms; }
+  .finalizing-ring { animation-duration: 3000ms; }
+}

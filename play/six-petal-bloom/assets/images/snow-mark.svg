@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="六出雪晶">
+  <circle cx="32" cy="32" r="29" fill="#E7ECE8"/>
+  <g stroke="#5F8079" stroke-width="3" stroke-linecap="round" fill="none">
+    <path d="M32 11v42M13.8 21.5l36.4 21M13.8 42.5l36.4-21"/>
+    <path d="M32 17l-5-4m5 4l5-4M32 47l-5 4m5-4l5 4M19 24l-1-6m1 6l-6 1M45 40l1 6m-1-6l6-1M19 40l-6-1m6 1l-1 6M45 24l6 1m-6-1l1-6"/>
+  </g>
+</svg>

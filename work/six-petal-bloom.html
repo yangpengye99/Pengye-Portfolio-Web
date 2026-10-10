@@ -1,0 +1,270 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Six-Petal Bloom — Generative Song-style Porcelain · Pengye Yang</title>
+  <meta name="description" content="Case study: Six-Petal Bloom (Liuchu Ninghua), an offline generative-art mini-tool for RED. Pick a white-glazed vessel, tap six times, and grow a crackle-glaze pattern you can post. Design and code by Pengye Yang.">
+  <meta name="theme-color" content="#000000">
+  <meta property="og:title" content="Six-Petal Bloom — Generative Song-style porcelain">
+  <meta property="og:image" content="/assets/img/bloom/patterns.webp">
+  <link rel="icon" href="/assets/img/ui/favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@500;600&family=Mrs+Saint+Delafield&family=Playfair+Display:wght@400;900&family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/assets/css/main.css">
+</head>
+<body style="--accent: #9fd0c6">
+
+<nav class="nav" aria-label="Primary">
+  <a class="nav-brand" href="/" aria-label="Pengye Yang, home">
+    <img src="/assets/img/lib/logo-white.webp" width="108" height="91" alt="">
+    <span>Pengye Yang</span>
+  </a>
+  <div class="nav-links">
+    <a href="/#more" class="keep">All work</a>
+    <a href="/work/six-petal-bloom" class="active">Six-Petal Bloom</a>
+    <a href="/work/parallel-mailbox">Parallel Mailbox</a>
+    <a href="/#contact" class="nav-cta">Contact</a>
+  </div>
+</nav>
+
+<main>
+  <!-- HERO -->
+  <header class="case-hero dim">
+    <div class="case-hero-bg"><img src="/assets/img/bloom/snow-bg.webp" width="1086" height="1448" alt="" fetchpriority="high"></div>
+    <div class="wrap hero-split">
+      <div>
+        <span class="vibe-badge reveal">RED Vibe Coding Challenge · 2026</span>
+        <h1 class="reveal d1"><span class="grad">Six-Petal Bloom</span></h1>
+        <p class="sub reveal d2">Grow a Song-style crackle glaze in six taps</p>
+        <p class="lede reveal d2">An offline generative-art mini-tool for RED (Xiaohongshu): choose a white-glazed porcelain vessel, tap six times to let crystal crackle bloom from its heart, then frame it as a poster worth posting.</p>
+        <div class="chips reveal d3"><span class="chip">Generative Design</span><span class="chip">Creative Coding</span><span class="chip">UI/UX</span><span class="chip">WebGL</span></div>
+        <div class="case-hero-meta reveal d4"><b>PROJECT</b><span>Concept / Interaction / Visual Design / Front-end Engineering</span></div>
+      </div>
+      <div class="hero-phones reveal-scale">
+        <div class="phone dark"><img src="/assets/img/bloom/entry.webp" width="620" height="1344" alt="Entry screen: calligraphic title over a slate crackle field"></div>
+        <div class="phone dark"><img src="/assets/img/bloom/poster.webp" width="700" height="1515" alt="A finished blue-violet bloom poster with vertical inscription"></div>
+      </div>
+    </div>
+  </header>
+
+  <!-- NAME -->
+  <section class="section">
+    <div class="wrap center">
+      <span class="eyebrow reveal">About the name</span>
+      <p class="statement reveal d1" style="margin:0 auto">Liù chū, “six-pointed”, is the classical name for a snowflake; níng huá is deposition — vapour turning straight into crystal. <span class="dim">“Most flowers have five petals; snowflakes alone have six.” The tool turns that line into a gesture: six taps, one crystal bloom.</span></p>
+      <div class="facts reveal d2">
+        <div><b>Role</b><span>Solo designer &amp; developer</span></div>
+        <div><b>Platform</b><span>RED mini-tool · offline HTML5</span></div>
+        <div><b>Date</b><span>Aug 2026</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROBLEM -->
+  <section class="section">
+    <div class="wrap">
+      <div class="section-head center">
+        <span class="eyebrow reveal">Problem &amp; Opportunity</span>
+        <h2 class="h-1 reveal d1"><span class="grad">“I can’t draw — I’m afraid it’ll look ugly.”</span></h2>
+        <p class="lede reveal d2">RED users love Chinese aesthetics, but creative tools either hand them a blank canvas that gets messy, or a random generator whose result never feels like theirs.</p>
+      </div>
+      <div class="grid c3">
+        <div class="card pad reveal"><h3 class="h-4">Free canvases get messy</h3><p class="body" style="margin-top:10px">Open-ended drawing tools put the whole burden of taste on people who just want something beautiful.</p></div>
+        <div class="card pad reveal d1"><h3 class="h-4">Pure randomness feels “not mine”</h3><p class="body" style="margin-top:10px">One-tap generators look nice but leave no authorship — nothing to be proud of, nothing to share.</p></div>
+        <div class="card pad reveal d2"><h3 class="h-4">Opportunity</h3><p class="body" style="margin-top:10px">A finished, personal, aesthetically safe piece in 30–90 seconds — with saving and posting built into the main flow, not bolted on.</p></div>
+      </div>
+      <p class="body center reveal" style="margin-top:28px">Benchmarked against Silk, Snowprint, Fluid Simulation, Dunhuang Silk Scarf and Thisissand — none combine crystal growth on a cultural object with guided composition and native save/publish.</p>
+    </div>
+  </section>
+
+  <!-- FLOW -->
+  <section class="section">
+    <div class="wrap">
+      <div class="section-head">
+        <span class="eyebrow reveal">Experience Flow</span>
+        <h2 class="h-1 reveal d1"><span class="grad">Choose a vessel, tap six times, grow one pattern</span></h2>
+        <p class="small reveal d2" style="margin-top:12px">Chinese-language product · screens shown as shipped.</p>
+      </div>
+      <div class="flow5">
+        <div class="step reveal"><span class="step-n">1</span><h3>Enter</h3><p>Voronoi crystals spread from the centre while the title is written stroke by stroke.</p><div class="phone dark"><img src="/assets/img/bloom/entry.webp" width="620" height="1344" alt="" loading="lazy"></div></div>
+        <div class="step reveal d1"><span class="step-n">2</span><h3>Choose a vessel</h3><p>Four white-glazed forms, each rendered live in 3D.</p><div class="phone dark"><img src="/assets/img/bloom/select.webp" width="560" height="1212" alt="" loading="lazy"></div></div>
+        <div class="step reveal d2"><span class="step-n">3</span><h3>Bloom</h3><p>Top-down and still. Each tap reveals a wave of crackle shards.</p><div class="phone dark"><img src="/assets/img/bloom/tap1.webp" width="560" height="1212" alt="" loading="lazy"></div></div>
+        <div class="step reveal d3"><span class="step-n">4</span><h3>Frame</h3><p>Rotate and pinch only unlock after the sixth tap — find the angle.</p><div class="phone dark"><img src="/assets/img/bloom/six.webp" width="560" height="1212" alt="" loading="lazy"></div></div>
+        <div class="step reveal d4"><span class="step-n">5</span><h3>Compose</h3><p>A poster with a vertical inscription, generated title and a vermilion seal.</p><div class="phone dark"><img src="/assets/img/bloom/result-red.webp" width="620" height="1344" alt="" loading="lazy"></div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- VESSELS -->
+  <section class="section">
+    <div class="wrap split">
+      <div>
+        <span class="eyebrow reveal">Four Vessels</span>
+        <h2 class="h-1 reveal d1"><span class="grad">Song-style forms, built entirely in code</span></h2>
+        <p class="lede reveal d2" style="margin-top:16px">Inspired by Ru-ware sky-blue washers and Southern Song foliate dishes. Every form, glaze, crack and crystal is generated at runtime — the package ships zero bitmap vessels.</p>
+        <ul class="timeline reveal d3" style="margin-top:28px">
+          <li><b>Qingbai</b><p><strong>Bluish-white six-petal foliate washer</strong></p></li>
+          <li><b>Tianbai</b><p><strong>Sweet-white conical tea bowl</strong></p></li>
+          <li><b>Yuebai</b><p><strong>Moon-white round-bellied bowl</strong></p></li>
+          <li><b>Luanbai</b><p><strong>Egg-white straight-walled cup</strong></p></li>
+        </ul>
+      </div>
+      <div class="phones c2" style="display:grid;grid-template-columns:1fr 1fr;gap:clamp(14px,2vw,26px);align-items:end">
+        <div class="phone dark reveal"><img src="/assets/img/bloom/select.webp" width="560" height="1212" alt="Vessel selector with four rendered bowls" loading="lazy"></div>
+        <div class="phone dark reveal d1 lift"><img src="/assets/img/bloom/douli.webp" width="560" height="1212" alt="Conical tea bowl blooming in pine-pollen yellow" loading="lazy"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- MECHANIC -->
+  <section class="section">
+    <div class="wrap">
+      <div class="section-head center">
+        <span class="eyebrow reveal">Core Mechanic</span>
+        <h2 class="h-1 reveal d1"><span class="grad">Every touch shows. Every piece finishes.</span></h2>
+        <p class="lede reveal d2">Each tap reveals a share of the crackle field equal to the remaining shards ÷ remaining taps — so the sixth tap always completes the bowl. Colour is deepest at the heart and whitens toward the rim.</p>
+      </div>
+      <img class="reveal-scale" src="/assets/img/bloom/patterns.webp" width="2400" height="600" alt="Four generated crackle-glaze patterns seen from above" loading="lazy">
+      <p class="cap">Four seeded results — two-layer Voronoi ice fields, each tinted by one family of neighbouring hues.</p>
+      <h3 class="h-3 reveal" style="margin:clamp(50px,6vw,80px) 0 18px">Twelve traditional colour anchors</h3>
+      <div class="palette reveal">
+        <span style="background:#c8452f">Vermilion<small>dānsè</small></span>
+        <span style="background:#d9703c">Persimmon<small>zhūshì</small></span>
+        <span style="background:#d9a441">Apricot<small>xìnghuáng</small></span>
+        <span style="background:#b8b45a">Pine pollen<small>sōnghuā</small></span>
+        <span style="background:#86ad62">Willow<small>liǔlǜ</small></span>
+        <span style="background:#5e9e80">Bamboo<small>zhúqīng</small></span>
+        <span style="background:#3f8f88">Jade<small>qīngbì</small></span>
+        <span style="background:#6fa3bd">Sky blue<small>tiānqīng</small></span>
+        <span style="background:#36577f">Indigo<small>diànqīng</small></span>
+        <span style="background:#4650a0">Ultramarine<small>qúnqīng</small></span>
+        <span style="background:#8a77b0">Wisteria<small>téngluó</small></span>
+        <span style="background:#a8475f">Rouge<small>yānzhī</small></span>
+      </div>
+      <p class="small reveal" style="margin-top:12px">Approximate swatches. Each work stays inside one family of neighbouring hues, so even a random seed stays harmonious.</p>
+    </div>
+  </section>
+
+  <!-- ITERATION -->
+  <section class="section">
+    <div class="wrap">
+      <div class="section-head">
+        <span class="eyebrow reveal">Iteration</span>
+        <h2 class="h-1 reveal d1"><span class="grad">From a mist-grey album leaf to an ink-black field</span></h2>
+      </div>
+      <div class="ba">
+        <div class="reveal">
+          <span class="ba-label">v1</span>
+          <div class="ba-media" style="background:#e7ece8;display:grid;place-items:center"><img src="/assets/img/bloom/v1-washer.webp" width="900" height="923" alt="v1: a single bitmap celadon washer" loading="lazy" style="width:auto;height:88%;object-fit:contain"></div>
+          <ul class="checks">
+            <li class="x">Light mist-grey ground (#E7ECE8) washed out the crystal highlights.</li>
+            <li class="x">One 1.3 MB PNG washer — no rotation, inaccurate texture mapping.</li>
+            <li class="x">6–10 crystals blurred the simple “tap six times” rule.</li>
+          </ul>
+        </div>
+        <div class="reveal d1">
+          <span class="ba-label new">v2</span>
+          <div class="ba-media"><img src="/assets/img/bloom/angles.webp" width="1620" height="505" alt="v2: procedural washer at three angles with clear-glaze reflections" loading="lazy" style="object-fit:contain"></div>
+          <ul class="checks">
+            <li>Ink-black field so crystal light reads; one vermilion seal as the only accent (≤ 0.5% of the canvas).</li>
+            <li>Procedural 3D lathe mesh — four vessels, free rotation, accurate glaze mapping.</li>
+            <li>Exactly six crystals: the rule becomes the ritual.</li>
+          </ul>
+        </div>
+      </div>
+      <h3 class="h-3 reveal" style="margin:clamp(50px,6vw,80px) 0 18px">How the crystal model evolved</h3>
+      <ul class="timeline">
+        <li class="reveal"><b>v2.2</b><p><strong>Walker crack propagation</strong> — organic, but slow to read and hard to finish in six taps.</p></li>
+        <li class="reveal d1"><b>v2.3</b><p><strong>Single-centre branching tree</strong> — clearer, but every bowl looked alike.</p></li>
+        <li class="reveal d2"><b>v2.4</b><p><strong>Reveal-style Voronoi shards</strong> — each tap uncovers a wave of ice plates; finishing is guaranteed.</p></li>
+        <li class="reveal d3"><b>v2.5</b><p><strong>Seeded variety</strong> — five shard families (drift, current, bloom, plates, rift) plus mood palettes.</p></li>
+        <li class="reveal d4"><b>v2.6</b><p><strong>Clear-glaze reflection</strong> — two virtual window lights, dimmed 72% over crystals, so it stays porcelain, not glass.</p></li>
+      </ul>
+      <div class="grid c2" style="margin-top:28px">
+        <figure class="figure reveal" style="margin:0"><img src="/assets/img/bloom/variety-before.webp" width="1200" height="302" alt="Before: four patterns that look alike" loading="lazy"><figcaption class="cap">Before v2.5 — similar results</figcaption></figure>
+        <figure class="figure reveal d1" style="margin:0"><img src="/assets/img/bloom/variety-after.webp" width="1200" height="302" alt="After: four distinct patterns" loading="lazy"><figcaption class="cap">After v2.5 — seeded shard families</figcaption></figure>
+      </div>
+    </div>
+  </section>
+
+  <!-- POSTER -->
+  <section class="section">
+    <div class="wrap split wide-right">
+      <div>
+        <span class="eyebrow reveal">Output</span>
+        <h2 class="h-1 reveal d1"><span class="grad">A poster with its own classical title</span></h2>
+        <p class="lede reveal d2" style="margin-top:16px">The vessel is the only hero. Two vertical columns record vessel, glaze, date and the traditional two-hour time period; a four-character seal signs it. Every work gets a generated title — “Clear Ice” and “Six-Point Album”.</p>
+        <p class="body reveal d3" style="margin-top:14px">Save to album or publish to RED through the native bridge; if it’s unavailable, a clean screenshot mode takes over. A local archive keeps the last eight works.</p>
+      </div>
+      <div class="phones c3">
+        <div class="phone dark reveal"><img src="/assets/img/bloom/result-green.webp" width="560" height="1212" alt="Bamboo-green result with save buttons" loading="lazy"></div>
+        <div class="phone dark reveal d1 lift"><img src="/assets/img/bloom/poster.webp" width="700" height="1515" alt="Exported blue-violet poster" loading="lazy"></div>
+        <div class="phone dark reveal d2"><img src="/assets/img/bloom/archive.webp" width="560" height="1212" alt="Local archive of works" loading="lazy"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SYSTEM -->
+  <section class="section">
+    <div class="wrap">
+      <div class="section-head center">
+        <span class="eyebrow reveal">Design System</span>
+        <h2 class="h-1 reveal d1"><span class="grad">Empty space matters more than filling it</span></h2>
+      </div>
+      <div class="swatches five">
+        <div class="swatch reveal" style="background:#07090a;color:#888;box-shadow:inset 0 0 0 1px rgba(255,255,255,.14)">Ink void<br>#07090A</div>
+        <div class="swatch reveal d1" style="background:#e9f2f3;color:#4a5556">Frost<br>#E9F2F3</div>
+        <div class="swatch reveal d2" style="background:#8fb2ac;color:#173330">Celadon<br>#8FB2AC</div>
+        <div class="swatch reveal d3" style="background:#b9dce8;color:#1d3a45">Ice<br>#B9DCE8</div>
+        <div class="swatch reveal d4" style="background:#8c3b32;color:#f3d9d4">Seal vermilion<br>#8C3B32</div>
+      </div>
+      <div class="grid c3" style="margin-top:24px">
+        <div class="metric reveal"><b>900 ms</b><h3>Per title character</h3><p>Calligraphy is written in, stroke by stroke.</p></div>
+        <div class="metric reveal d1"><b>620 ms</b><h3>Tap ripple</h3><p>A porcelain chime, synthesised in Web Audio.</p></div>
+        <div class="metric reveal d2"><b>260 ms</b><h3>Page transitions</h3><p>With reduced-motion fallbacks throughout.</p></div>
+      </div>
+      <p class="statement reveal" style="margin:clamp(40px,5vw,64px) auto 0;text-align:center">Self-check: with every word hidden, a screenshot should still read as <span class="dim">a porcelain vessel growing six crystals.</span></p>
+    </div>
+  </section>
+
+  <!-- ENGINEERING -->
+  <section class="section">
+    <div class="wrap">
+      <div class="section-head">
+        <span class="eyebrow reveal">Engineering</span>
+        <h2 class="h-1 reveal d1"><span class="grad">Hand-written WebGL, fully offline</span></h2>
+        <p class="lede reveal d2" style="margin-top:14px">RED’s mini-tool sandbox allows no network, CDN, workers, WASM, ES modules or eval — so everything is classic scripts at the ZIP root, under a 10 MB cap.</p>
+      </div>
+      <div class="grid c3">
+        <div class="card pad reveal"><h3 class="h-4">Lathe renderer</h3><p class="body" style="margin-top:8px">Custom WebGL revolve meshes from Catmull-Rom profiles, orbit camera and CPU ray-picking — with a Canvas 2D fallback.</p></div>
+        <div class="card pad reveal d1"><h3 class="h-4">Ice field</h3><p class="body" style="margin-top:8px">Two-layer Voronoi crackle on a seeded PRNG; one field shared by the session and the renderer.</p></div>
+        <div class="card pad reveal d2"><h3 class="h-4">Glaze texture</h3><p class="body" style="margin-top:8px">Polar-disc layout; finished crystals are baked, only dirty rectangles are re-uploaded each tap.</p></div>
+      </div>
+      <div class="grid c4" style="margin-top:14px">
+        <div class="metric reveal"><b>64/64</b><h3>Tests passing</h3></div>
+        <div class="metric reveal d1"><b>18 ms</b><h3>Max pointer handler</h3></div>
+        <div class="metric reveal d2"><b>0</b><h3>Long tasks at 2× CPU throttle</h3></div>
+        <div class="metric reveal d3"><b>0</b><h3>Bitmap vessels shipped</h3></div>
+      </div>
+      <p class="body reveal" style="margin-top:28px">Cultural claims are sourced from museum collections and kept honest: the forms are “Song-style”, never presented as replicas.</p>
+    </div>
+  </section>
+
+  <a class="next" href="/work/parallel-mailbox">
+    <small>Next project</small>
+    <strong><span class="grad">Parallel Mailbox</span></strong>
+    <span class="link-arrow">View case study <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+  </a>
+</main>
+
+<footer class="footer">
+  <div class="wrap">
+    <span class="script">2026 Portfolio</span>
+    <span>© <span data-year>2026</span> Pengye Yang · <a href="mailto:yangpengye99@gmail.com">yangpengye99@gmail.com</a></span>
+  </div>
+</footer>
+<script src="/assets/js/main.js" defer></script>
+</body>
+</html>

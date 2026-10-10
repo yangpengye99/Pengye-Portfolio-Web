@@ -983,6 +983,7 @@ a.vibe:hover .link-arrow svg { transform: translateX(4px); }
   .two-m > * { grid-column: auto !important; }
   .case-hero-bg::after { background: linear-gradient(0deg, #000 10%, rgba(0, 0, 0, 0.75) 45%, rgba(0, 0, 0, 0.35) 100%); }
   .case-hero { align-items: flex-end; }
+  .case-hero-bg img[style*="scale(1.16)"] { transform: none !important; }
 }
 
 @media (max-width: 600px) {

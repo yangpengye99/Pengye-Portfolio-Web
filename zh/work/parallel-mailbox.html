@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1, viewport-fit=cover" name="viewport"/>
+<title>Parallel Mailbox — Letters to a Parallel Universe · Pengye Yang</title>
+<meta content="Case study: Parallel Mailbox, a RED mini-tool where you post today away and receive a letter from a parallel version of yourself. Deterministic story system, blind-box envelopes, design and code by Pengye Yang." name="description"/>
+<meta content="#000000" name="theme-color"/>
+<meta content="Parallel Mailbox — Letters to a Parallel Universe" property="og:title"/>
+<meta content="/assets/img/mailbox/hero.webp" property="og:image"/>
+<link href="/assets/img/ui/favicon-32.png" rel="icon" sizes="32x32" type="image/png"/>
+<link href="/assets/img/ui/icon-192.png" rel="icon" sizes="192x192" type="image/png"/>
+<link href="/assets/img/ui/apple-touch-icon.png" rel="apple-touch-icon"/>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Caveat:wght@500&amp;family=Mrs+Saint+Delafield&amp;family=Playfair+Display:wght@400;900&amp;family=Poppins:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="/assets/css/main.css" rel="stylesheet"/>
+<script>document.addEventListener("error",function(e){var t=e.target;if(t.tagName==="IMG"&&/\.avif$/.test(t.getAttribute("src")||""))t.src=t.getAttribute("src").replace(/\.avif$/,".webp")},true)</script>
+</head>
+<body style="--accent: #d9b26a">
+<div class="topbar">
+<nav aria-label="Primary" class="nav">
+<a aria-label="Pengye Yang, home" class="nav-brand" href="/zh">
+<img alt="Pengye Yang" decoding="async" height="91" src="/assets/img/lib/logo-white.avif" width="108"/>
+</a>
+<div class="nav-links">
+<a class="keep active" href="/zh#work">作品</a>
+<a class="keep" href="/zh/about">关于</a>
+<a class="nav-cta" href="/zh#contact">联系</a>
+</div>
+</nav>
+<a aria-label="Switch to English" class="lang-bubble" href="/work/parallel-mailbox" hreflang="en" lang="en">EN</a>
+</div>
+<main>
+<!-- HERO -->
+<header class="case-hero dim">
+<div class="case-hero-bg" style="--hero-pos:70% 40%"><img alt="" decoding="async" fetchpriority="high" height="1867" src="/assets/img/mailbox/hero.avif" width="1400"/></div>
+<div class="wrap hero-split">
+<div>
+<span class="vibe-badge reveal">小红书 Vibe Coding 大赛 · 2026</span>
+<h1 class="reveal d1"><span class="grad">平行信箱</span></h1>
+<p class="sub reveal d2">寄往平行宇宙的信</p>
+<p class="lede reveal d2">把今天寄给另一个可能的自己，收到一句让你想继续走下去的话。</p>
+<div class="chips reveal d3"><span class="chip">互动故事</span><span class="chip">UI/UX</span><span class="chip">动效</span><span class="chip">创意编程</span></div>
+<div class="case-hero-meta reveal d4"><b>PROJECT</b><span>概念 / 叙事系统 / 交互 / 视觉设计 / 前端</span></div>
+</div>
+<div class="hero-phones reveal-scale">
+<div class="phone dark"><img alt="Intro: a floating envelope among planets and a shooting star" decoding="async" height="1214" src="/assets/img/mailbox/intro.avif" width="560"/></div>
+<div class="phone dark"><img alt="The rare gilded letter with an infinity postmark" decoding="async" height="1212" src="/assets/img/mailbox/letter-gilded.avif" width="560"/></div>
+</div>
+</div>
+</header>
+<!-- PLAY -->
+<section class="section" id="play" style="--demo-glow:rgba(217,178,106,.16)">
+<div class="wrap demo">
+<div>
+<span class="eyebrow reveal">Try it</span>
+<h2 class="h-1 reveal d1"><span class="grad">试玩真实作品</span></h2>
+<p class="lede reveal d2" style="margin-top:16px">选出八张像「今天」的照片，封好信寄出，再亲手拆开另一条人生线寄回的信。每一百封里，会有一封鎏金信。</p>
+<div class="demo-actions reveal d3">
+<a class="btn btn-primary" href="/play/parallel-mailbox/index.html" rel="noopener" target="_blank">全屏打开 <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.2" viewbox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></a>
+<button class="btn btn-glass" data-demo-restart="">重新开始</button>
+</div>
+<p class="demo-note reveal d4">这是提交给小红书的离线作品包。保存与发布需要在小红书 App 内使用，在网页中会自动切换为截图模式。</p>
+</div>
+<div class="demo-phone reveal-scale" data-src="/play/parallel-mailbox/index.html" data-title="Parallel Mailbox">
+<span aria-hidden="true" class="demo-island"></span>
+<div class="demo-screen">
+<button aria-label="Play Parallel Mailbox" class="demo-cover">
+<img alt="" decoding="async" src="/assets/img/mailbox/intro.avif"/>
+<span class="demo-play"><svg fill="currentColor" viewbox="0 0 24 24"><path d="M7 4.5v15l13-7.5z"></path></svg>点击试玩</span>
+</button>
+</div>
+</div>
+</div>
+</section>
+<!-- ABOUT -->
+<section class="section">
+<div class="wrap center">
+<span class="eyebrow reveal">关于</span>
+<p class="statement reveal d1" style="margin:0 auto">一个睡前的小仪式。 <span class="dim">不填问卷、不上传、不做自我分析，也不是人格测试或算命。你只需选出像「今天」的照片，就会收到来自另一条人生线上 2–9 年后的自己的回信。</span></p>
+<div class="facts reveal d2">
+<div><b>角色</b><span>独立设计与开发</span></div>
+<div><b>平台</b><span>小红书小工具 · 离线 HTML5</span></div>
+<div><b>时间</b><span>2026 年 8 月</span></div>
+</div>
+</div>
+</section>
+<!-- FLOW -->
+<section class="section">
+<div class="wrap">
+<div class="section-head">
+<span class="eyebrow reveal">体验流程 · v2</span>
+<h2 class="h-1 reveal d1"><span class="grad">封信、寄出、亲手拆开蜡封</span></h2>
+<p class="small reveal d2" style="margin-top:12px">以下为作品实际界面。</p>
+</div>
+<div class="flow6">
+<div class="step reveal"><span class="step-n">1</span><h3>开场</h3><p>星空与行星之间，信封轮换展示全部 17 种款式。</p><div class="phone dark"><img alt="" decoding="async" height="1214" loading="lazy" src="/assets/img/mailbox/intro.avif" width="560"/></div></div>
+<div class="step reveal d1"><span class="step-n">2</span><h3>交信</h3><p>一个写着你名字的空信封。</p><div class="phone dark"><img alt="" decoding="async" height="932" loading="lazy" src="/assets/img/mailbox/handover.avif" width="430"/></div></div>
+<div class="step reveal d2"><span class="step-n">3</span><h3>八次选择</h3><p>每选一张照片，它就飞进信封。</p><div class="phone dark"><img alt="" decoding="async" height="932" loading="lazy" src="/assets/img/mailbox/intake.avif" width="430"/></div></div>
+<div class="step reveal d3"><span class="step-n">4</span><h3>封缄寄出</h3><p>火漆封口，跃迁星空锁定属于你的宇宙。</p><div class="phone dark"><img alt="" decoding="async" height="1214" loading="lazy" src="/assets/img/mailbox/sealed.avif" width="560"/></div></div>
+<div class="step reveal d4"><span class="step-n">5</span><h3>回信</h3><p>亲手拆开火漆，回信与照片随之出现。</p><div class="phone dark"><img alt="" decoding="async" height="1214" loading="lazy" src="/assets/img/mailbox/letter-common.avif" width="560"/></div></div>
+<div class="step reveal d4"><span class="step-n">6</span><h3>为什么是它</h3><p>只用你选过的照片来解释结果。</p><div class="phone dark"><img alt="" decoding="async" height="932" loading="lazy" src="/assets/img/mailbox/why.avif" width="430"/></div></div>
+</div>
+</div>
+</section>
+<!-- CONTENT SYSTEM -->
+<section class="section">
+<div class="wrap">
+<div class="section-head center">
+<span class="eyebrow reveal">叙事系统</span>
+<h2 class="h-1 reveal d1"><span class="grad">256 条路径，完全确定</span></h2>
+<p class="lede reveal d2">所有选择最终落入四个宇宙之一。第 1–4 题决定 <em>载体</em> ：人、地方、物件或仪式；第 5–8 题决定 <em>方向</em> ：延续、连接、指引或可能。同样的选择，永远得到同一封信。</p>
+</div>
+<div class="big-nums">
+<div class="metric reveal"><b>8</b><h3>道题</h3></div>
+<div class="metric reveal d1"><b>256</b><h3>条路径</h3></div>
+<div class="metric reveal d2"><b>4</b><h3>个宇宙</h3></div>
+<div class="metric reveal d3"><b>16</b><h3>张回信照片</h3></div>
+<div class="metric reveal d4"><b>32</b><h3>封信</h3></div>
+<div class="metric reveal d4"><b>2–9</b><h3>年后</h3></div>
+</div>
+<div class="grid c4" style="margin-top:24px">
+<div class="card pad reveal"><h3 class="h-4">同行宇宙</h3></div>
+<div class="card pad reveal d1"><h3 class="h-4">落脚宇宙</h3></div>
+<div class="card pad reveal d2"><h3 class="h-4">手边宇宙</h3></div>
+<div class="card pad reveal d3"><h3 class="h-4">节拍宇宙</h3></div>
+</div>
+<div class="grid c4" style="margin-top:24px">
+<figure class="figure reveal" style="margin:0;aspect-ratio:1"><img alt="Reply photos, set 1" decoding="async" height="900" loading="lazy" src="/assets/img/mailbox/replies-1.avif" width="900"/></figure>
+<figure class="figure reveal d1" style="margin:0;aspect-ratio:1"><img alt="Reply photos, set 2" decoding="async" height="900" loading="lazy" src="/assets/img/mailbox/replies-2.avif" width="900"/></figure>
+<figure class="figure reveal d2" style="margin:0;aspect-ratio:1"><img alt="Reply photos, set 3" decoding="async" height="900" loading="lazy" src="/assets/img/mailbox/replies-3.avif" width="900"/></figure>
+<figure class="figure reveal d3" style="margin:0;aspect-ratio:1"><img alt="Reply photos, set 4" decoding="async" height="900" loading="lazy" src="/assets/img/mailbox/replies-4.avif" width="900"/></figure>
+</div>
+<p class="cap">16 张电影感夜景「回信照片」。选择还会编码成 00–FF 的邮戳，对应这封信写于多少年后。</p>
+</div>
+</section>
+<!-- BLIND BOX -->
+<section class="section">
+<div class="wrap split">
+<div>
+<span class="eyebrow reveal">v2 · 盲盒信封</span>
+<h2 class="h-1 reveal d1"><span class="grad">把随机讲成故事</span></h2>
+<p class="lede reveal d2" style="margin-top:16px">分为两层。 <strong style="color:#fff">因果层</strong> （宇宙、年份、信件、照片）永远不变； <strong style="color:#fff">惊喜层</strong> （信封、火漆、信纸与粒子）按概率抽取，并被解释为「跨维度邮政的物理现象」，而不是「更准」。</p>
+<div class="tiers reveal d3" style="margin-top:28px">
+<div><span>稀有度</span><span>概率</span><span>款式</span><span>说明</span></div>
+<div><b>普通</b><span>55%</span><span>4</span><span></span></div>
+<div><b>少见</b><span>27%</span><span>4</span><span></span></div>
+<div><b>稀有</b><span>12%</span><span>4</span><span>例如「被另一个宇宙再盖了一次邮戳」</span></div>
+<div><b>传说</b><span>5%</span><span>4</span><span>每款 1.25%</span></div>
+<div class="gold"><b>鎏金</b><span>1%</span><span>1</span><span>∞ 邮戳、署名「神秘」，附一封彩蛋信</span></div>
+</div>
+<p class="small reveal" style="margin-top:12px">17 款信封全部由 CSS/SVG 绘制，零位图；概率经过 20 万次模拟抽取验证。</p>
+</div>
+<div class="grid c2" style="align-items:end">
+<figure class="figure reveal" style="margin:0;border-radius:28px"><img alt="All 17 envelope designs laid out by rarity tier" decoding="async" height="1600" loading="lazy" src="/assets/img/mailbox/flatlay.avif" width="1200"/></figure>
+<div class="phone dark reveal d1"><img alt="The gilded letter" decoding="async" height="1212" loading="lazy" src="/assets/img/mailbox/letter-gilded.avif" width="560"/></div>
+</div>
+</div>
+</section>
+<!-- ITERATION -->
+<section class="section">
+<div class="wrap">
+<div class="section-head">
+<span class="eyebrow reveal">迭代</span>
+<h2 class="h-1 reveal d1"><span class="grad">从复古邮筒到深空</span></h2>
+</div>
+<div class="ba">
+<div class="reveal">
+<span class="ba-label">v1 · 骨白信纸与复古邮筒</span>
+<div class="ba-media" style="aspect-ratio:auto;display:grid;grid-template-columns:1fr 1fr;gap:12px;background:none">
+<div class="phone"><img alt="v1 intro with a cream mailbox" decoding="async" height="932" loading="lazy" src="/assets/img/mailbox/v1-intro.avif" width="430"/></div>
+<div class="phone"><img alt="v1 letter with a tilted photo print" decoding="async" height="932" loading="lazy" src="/assets/img/mailbox/v1-reveal.avif" width="430"/></div>
+</div>
+<ul class="checks">
+<li>暖骨白信纸（#F4EFE4）、档案红与宋体衬线，营造安静的档案感。</li>
+<li class="x">单独的反馈页打断了「选择」到「寄出」的节奏。</li>
+<li class="x">2.4 MB 的寄信视频与位图信纸让包体达到 8.8 MB。</li>
+</ul>
+</div>
+<div class="reveal d1">
+<span class="ba-label new">v2 · 夜空</span>
+<div class="ba-media" style="aspect-ratio:auto;display:grid;grid-template-columns:1fr 1fr;gap:12px;background:none">
+<div class="phone dark"><img alt="v2 question screen with a sealed envelope" decoding="async" height="1214" loading="lazy" src="/assets/img/mailbox/sealed.avif" width="560"/></div>
+<div class="phone dark"><img alt="v2 letter" decoding="async" height="1214" loading="lazy" src="/assets/img/mailbox/letter-common.avif" width="560"/></div>
+</div>
+<ul class="checks">
+<li>照片直接装入信封；送达时由你亲手拆开火漆。</li>
+<li>用代码绘制的跃迁星空与 CSS 信纸取代视频和位图。</li>
+<li>包体从 8.8 MB 降到 1.9 MB。</li>
+</ul>
+</div>
+</div>
+</div>
+</section>
+<a class="next-card" href="/zh/work/six-petal-bloom" style="--next-bg:url('/assets/img/bloom/patterns.avif');--next-pos:50% 50%">
+<span class="next-card-inner">
+<span>
+<small>下一个项目</small>
+<strong><span class="grad">六出凝华</span></strong>
+<span class="next-sub" style="display:block">点六下，养出一盏宋式冰裂釉</span>
+<span class="btn btn-primary">查看项目 <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.2" viewbox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></span>
+</span>
+<span class="next-card-media"><img alt="" decoding="async" loading="lazy" src="/assets/img/bloom/patterns.avif"/></span>
+</span>
+</a>
+</main>
+<footer class="footer">
+<div class="wrap">
+<span class="script">2026 Portfolio</span>
+<span>© <span data-year="">2026</span> 杨朋烨 · <a href="mailto:yangpengye99@gmail.com">yangpengye99@gmail.com</a></span>
+</div>
+</footer>
+<script defer="" src="/assets/js/main.js"></script>
+</body>
+</html>

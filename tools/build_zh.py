@@ -46,7 +46,7 @@ for page in PAGES:
     for t in soup.find_all(string=True):
         if isinstance(t, Comment) or t.parent.name in ('script', 'style'):
             continue
-        if t.find_parent(class_='slides'):
+        if t.find_parent(class_='slides') or t.find_parent(attrs={'translate': 'no'}):
             continue
         key = norm(t)
         if not key or not any(c.isalpha() for c in key):

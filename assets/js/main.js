@@ -42,15 +42,27 @@
     });
   }
 
-  // Seamless marquee: duplicate each row's children once
-  document.querySelectorAll(".marquee-row").forEach((row) => {
-    [...row.children].forEach((c) => {
-      const clone = c.cloneNode(true);
-      clone.setAttribute("aria-hidden", "true");
-      clone.alt = "";
-      row.appendChild(clone);
+  // Seamless marquee: repeat each row's set until it is wider than the screen,
+  // then double it so translateX(-50%) loops with no visible gap at any width.
+  const rows = [...document.querySelectorAll(".marquee-row")].map((row) => ({ row, items: [...row.children] }));
+  const fillRows = () => {
+    rows.forEach(({ row, items }) => {
+      row.replaceChildren(...items);
+      const gap = parseFloat(getComputedStyle(row).columnGap) || 0;
+      const setW = items.reduce((w, el) => w + el.getBoundingClientRect().width + gap, 0);
+      if (!setW) return;
+      const reps = Math.max(1, Math.ceil((window.innerWidth + 200) / setW));
+      const half = [];
+      for (let r = 0; r < reps; r++) items.forEach((el) => half.push(r ? el.cloneNode(true) : el));
+      const clones = half.map((el) => el.cloneNode(true));
+      [...half.slice(items.length), ...clones].forEach((c) => { c.setAttribute("aria-hidden", "true"); c.alt = ""; c.loading = "eager"; });
+      row.replaceChildren(...half, ...clones);
+      row.style.setProperty("--dur", Math.round((setW * reps) / 45) + "s");
     });
-  });
+  };
+  fillRows();
+  let rt = 0;
+  window.addEventListener("resize", () => { clearTimeout(rt); rt = setTimeout(fillRows, 200); });
 
   // Cover: subtle parallax on the glass slabs and tags
   const cover = document.querySelector(".cover");

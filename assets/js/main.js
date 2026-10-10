@@ -12,9 +12,29 @@
         }
       });
     },
-    { rootMargin: "0px 0px -8% 0px", threshold: 0.08 }
+    { rootMargin: "0px 0px 8% 0px", threshold: 0 }
   );
   document.querySelectorAll(".reveal, .reveal-scale").forEach((el) => io.observe(el));
+
+  // Warm every lazy image in the background once the page has loaded (4 at a time, in page order),
+  // so scrolling never waits on a fetch. Skipped when the visitor asked to save data.
+  const warm = () => {
+    if (navigator.connection && navigator.connection.saveData) return;
+    const imgs = [...document.querySelectorAll('img[loading="lazy"]')];
+    let i = 0;
+    const next = () => {
+      const img = imgs[i++];
+      if (!img) return;
+      img.loading = "eager";
+      if (img.complete) return next();
+      img.addEventListener("load", next, { once: true });
+      img.addEventListener("error", next, { once: true });
+    };
+    for (let k = 0; k < 4; k++) next();
+  };
+  const idle = window.requestIdleCallback || ((f) => setTimeout(f, 200));
+  if (document.readyState === "complete") idle(warm);
+  else window.addEventListener("load", () => idle(warm), { once: true });
 
   // Nav state + active section
   const nav = document.querySelector(".nav");

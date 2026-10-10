@@ -236,14 +236,15 @@ ul { margin: 0; padding: 0; list-style: none; }
 .nav-links a:hover, .nav-links a.active { color: #fff; background: rgba(255, 255, 255, 0.08); }
 
 /* ---------- reveal motion ---------- */
-.reveal { opacity: 0; transform: translateY(36px); filter: blur(6px); transition: opacity 1.1s var(--ease), transform 1.1s var(--ease), filter 1.1s var(--ease); }
-.reveal.in { opacity: 1; transform: none; filter: none; }
-.reveal.d1 { transition-delay: 0.08s; }
-.reveal.d2 { transition-delay: 0.16s; }
-.reveal.d3 { transition-delay: 0.24s; }
-.reveal.d4 { transition-delay: 0.32s; }
-.reveal-scale { opacity: 0; transform: scale(0.94); transition: opacity 1.3s var(--ease), transform 1.3s var(--ease); }
-.reveal-scale.in { opacity: 1; transform: none; }
+/* outside the landing cover motion stays quiet: a short fade with a small rise, no blur */
+.reveal { opacity: 0; transform: translateY(14px); transition: opacity 0.6s ease-out, transform 0.6s var(--ease); }
+.reveal.in { opacity: 1; transform: none; }
+.reveal.d1 { transition-delay: 0.04s; }
+.reveal.d2 { transition-delay: 0.08s; }
+.reveal.d3 { transition-delay: 0.12s; }
+.reveal.d4 { transition-delay: 0.16s; }
+.reveal-scale { opacity: 0; transition: opacity 0.6s ease-out; }
+.reveal-scale.in { opacity: 1; }
 
 /* =========================================================
    HOME — cover. Built 1:1 from the PDF cover (measured on a 2000px render):
@@ -515,11 +516,10 @@ ul { margin: 0; padding: 0; list-style: none; }
   border-radius: 22px;
   overflow: hidden;
   z-index: -1;
-  transition: transform 0.9s var(--ease);
+  transition: transform 0.6s var(--ease);
 }
-.folder-media img { width: 100%; height: 100%; object-fit: cover; transition: transform 1.2s var(--ease); }
-.folder:hover .folder-media { transform: translateY(-5%) rotate(-1.5deg); }
-.folder:hover .folder-media img { transform: scale(1.05); }
+.folder-media img { width: 100%; height: 100%; object-fit: cover; }
+.folder:hover .folder-media { transform: translateY(-3%); }
 .folder-front {
   position: absolute;
   left: 0;
@@ -536,10 +536,6 @@ ul { margin: 0; padding: 0; list-style: none; }
   -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 60' preserveAspectRatio='none'%3E%3Cpath d='M0 7Q0 0 7 0H42Q46 0 48.5 3.5L53 10Q55.5 13 60 13H93Q100 13 100 20V52Q100 60 92 60H8Q0 60 0 52Z'/%3E%3C/svg%3E") center / 100% 100% no-repeat;
   mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 60' preserveAspectRatio='none'%3E%3Cpath d='M0 7Q0 0 7 0H42Q46 0 48.5 3.5L53 10Q55.5 13 60 13H93Q100 13 100 20V52Q100 60 92 60H8Q0 60 0 52Z'/%3E%3C/svg%3E") center / 100% 100% no-repeat;
 }
-/* fade the cards in with opacity + transform only: a filter on the card would re-root the
-   frosted panel's backdrop and make the glass "pop" in when the animation ends */
-.reveal:has(.btn-glass) { filter: none; }
-.folder.reveal, .folder.reveal.in { filter: none; transition: opacity 0.9s var(--ease), transform 0.9s var(--ease); }
 .folder-front::before { content: ""; position: absolute; inset: 0; background: linear-gradient(180deg, rgba(255, 255, 255, 0.16), rgba(255, 255, 255, 0) 30%); pointer-events: none; }
 .folder-num { display: block; font-size: clamp(20px, 2vw, 28px); font-weight: 600; line-height: 1; }
 .folder-text, .folder-title, .folder-desc { display: block; }
@@ -559,7 +555,7 @@ ul { margin: 0; padding: 0; list-style: none; }
   white-space: nowrap;
   transition: transform 0.6s var(--ease);
 }
-.folder:hover .folder-tag { transform: translateY(-4px) rotate(-3deg); }
+.folder:hover .folder-tag { transform: translateY(-3px); }
 .folder-go { position: absolute; right: clamp(20px, 2.4vw, 32px); bottom: clamp(22px, 2.4vw, 32px); width: 40px; height: 40px; border-radius: 50%; display: grid; place-items: center; background: rgba(255, 255, 255, 0.12); transition: background 0.3s, transform 0.5s var(--ease); }
 .folder-go svg { width: 16px; height: 16px; }
 .folder:hover .folder-go { background: #fff; color: #000; transform: rotate(-45deg); }

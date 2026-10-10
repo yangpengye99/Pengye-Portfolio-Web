@@ -77,11 +77,28 @@
       raf = requestAnimationFrame(() => {
         layers.forEach((l) => {
           const d = parseFloat(l.dataset.depth);
-          l.style.transform = `translate3d(${x * d}px, ${y * d}px, 0)`;
+          l.style.translate = `${x * d}px ${y * d}px`;
         });
       });
     });
-    cover.addEventListener("pointerleave", () => layers.forEach((l) => (l.style.transform = "")));
+    cover.addEventListener("pointerleave", () => layers.forEach((l) => (l.style.translate = "")));
+  }
+
+  // Experience: cards stay folded until the list scrolls into view, then unfold one by one
+  const xpList = document.querySelector(".xp-list");
+  if (xpList && !reduce) {
+    const cards = [...xpList.querySelectorAll(".xp")];
+    xpList.classList.add("foldable");
+    const unfold = () => {
+      xpList.classList.add("unfolded");
+      cards.forEach((c, i) => setTimeout(() => c.classList.add("open"), 140 * i));
+    };
+    const xo = new IntersectionObserver(
+      (es) => es.forEach((e) => { if (e.isIntersecting) { unfold(); xo.disconnect(); } }),
+      { rootMargin: "0px 0px -30% 0px" }
+    );
+    xo.observe(xpList);
+    cards.forEach((c) => c.addEventListener("click", () => { c.classList.add("open"); xpList.classList.add("unfolded"); }));
   }
 
   // Copy email

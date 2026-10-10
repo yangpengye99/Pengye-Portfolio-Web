@@ -486,10 +486,8 @@ ul { margin: 0; padding: 0; list-style: none; }
 .marquee-row { display: flex; gap: 22px; padding-right: 22px; width: max-content; animation: marquee var(--dur, 60s) linear infinite; will-change: transform; }
 .marquee-row.rev { animation-direction: reverse; }
 .marquee:hover .marquee-row { animation-play-state: paused; }
-.marquee-row img { flex: none; width: clamp(150px, 15vw, 280px); aspect-ratio: 220 / 477; object-fit: cover; border-radius: clamp(20px, 2vw, 30px); background: #0b0b0c; box-shadow: 0 0 0 1px var(--line-soft); }
+.marquee-row img { flex: none; width: clamp(170px, 16vw, 290px); height: auto; filter: drop-shadow(0 24px 40px rgba(0, 0, 0, 0.5)); }
 @keyframes marquee { to { transform: translateX(-50%); } }
-.overview { padding-bottom: 0; }
-.overview-word { margin-top: clamp(96px, 13vw, 180px); text-align: center; font-size: clamp(42px, 8vw, 120px); font-weight: 700; letter-spacing: -0.04em; line-height: 0.95; }
 
 /* =========================================================
    HOME — project folders (glass folder cards, from p.4)

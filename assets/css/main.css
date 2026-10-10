@@ -728,6 +728,13 @@ a.vibe:hover .link-arrow svg { transform: translateX(4px); }
 .metric b { display: block; font-size: clamp(34px, 4vw, 52px); font-weight: 700; letter-spacing: -0.03em; line-height: 1; color: var(--accent); }
 .metric h3 { margin-top: 16px; font-size: 17px; font-weight: 600; }
 .metric p { margin-top: 6px; font-size: 14px; color: var(--text-2); }
+.metric-row { display: grid; grid-template-columns: 150px 1fr auto; align-items: center; gap: 24px; padding: 22px 28px; }
+.metric-row b { font-size: clamp(28px, 2.5vw, 38px); }
+.metric-row p { margin: 0; font-size: 14.5px; line-height: 1.55; }
+.metric-row img { justify-self: end; max-height: 40px; max-width: 132px; width: auto !important; object-fit: contain; }
+.expo-grid { grid-auto-rows: 1fr; }
+.expo-grid .figure { aspect-ratio: auto !important; height: 100%; }
+@media (max-width: 600px) { .metric-row { grid-template-columns: 1fr auto; gap: 10px 16px; } .metric-row p { grid-column: 1 / -1; } .metric-row img { grid-row: 1; grid-column: 2; } }
 .metrics-sm .metric { padding: 20px 18px; }
 .metrics-sm .metric b { font-size: clamp(26px, 2.5vw, 38px); }
 .metrics-sm .metric h3 { font-size: 15px; }

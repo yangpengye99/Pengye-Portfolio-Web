@@ -1,19 +1,40 @@
-"""Cache-bust main.css / main.js: rewrite their links in every EN page to ?v=<content hash>.
-/assets is cached for 7 days (vercel.json), so run this (then build_zh.py) whenever either file changes."""
+"""Cache-bust: rewrite main.css / main.js links and every <img src="/assets/img/..."> to ?v=<content hash>.
+/assets is cached for 7 days (vercel.json), so a changed file must get a new URL or returning visitors
+keep the old one. Run this LAST (after build_zh.py), whenever CSS, JS or any image changes; it stamps
+both the EN pages and the generated /zh pages."""
 import glob
 import hashlib
 import os
 import re
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-ASSETS = {'/assets/css/main.css': 'href', '/assets/js/main.js': 'src'}
-ver = {p: hashlib.md5(open(ROOT + p, 'rb').read()).hexdigest()[:8] for p in ASSETS}
+_hash = {}
 
-pages = ['index.html', 'about.html'] + sorted(glob.glob(os.path.join(ROOT, 'work', '*.html')))
+
+def ver(path):
+    if path not in _hash:
+        f = ROOT + path
+        _hash[path] = hashlib.md5(open(f, 'rb').read()).hexdigest()[:8] if os.path.exists(f) else None
+    return _hash[path]
+
+
+def stamp(m):
+    attr, path = m.group(1), m.group(2)
+    v = ver(path)
+    return f'{attr}="{path}?v={v}"' if v else m.group(0)
+
+
+# the avif -> webp fallback must keep working when the src carries a ?v= query
+OLD_FALLBACK = 'if(t.tagName==="IMG"&&/\\.avif$/.test(t.getAttribute("src")||""))t.src=t.getAttribute("src").replace(/\\.avif$/,".webp")'
+NEW_FALLBACK = 'if(t.tagName==="IMG"&&/\\.avif(\\?|$)/.test(t.getAttribute("src")||""))t.src=t.getAttribute("src").replace(/\\.avif(?=\\?|$)/,".webp")'
+
+pages = ['index.html', 'about.html'] + sorted(glob.glob('work/*.html', root_dir=ROOT)) + sorted(glob.glob('zh/**/*.html', root_dir=ROOT, recursive=True))
+n = 0
 for page in pages:
     f = os.path.join(ROOT, page)
     s = open(f, encoding='utf-8').read()
-    for p, attr in ASSETS.items():
-        s = re.sub(rf'{attr}="{re.escape(p)}(\?v=[0-9a-f]+)?"', f'{attr}="{p}?v={ver[p]}"', s)
-    open(f, 'w', encoding='utf-8', newline='\n').write(s)
-print(ver)
+    s = s.replace(OLD_FALLBACK, NEW_FALLBACK)
+    s2 = re.sub(r'(href|src)="(/assets/(?:css/main\.css|js/main\.js|img/[^"?]+))(?:\?v=[0-9a-f]+)?"', stamp, s)
+    n += len(re.findall(r'\?v=[0-9a-f]{8}', s2))
+    open(f, 'w', encoding='utf-8', newline='\n').write(s2)
+print(len(pages), 'pages,', n, 'versioned urls')

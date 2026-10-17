@@ -14,7 +14,6 @@
   "Selected UI work": "UI 界面作品",
   "Project Overview": "Project Overview",
   "Selected projects": "个人项目预览",
-  "Three end-to-end case studies spanning smart hardware, mixed reality and consumer apps.": "三个完整的项目案例，覆盖智能硬件、混合现实与消费级 App。",
   "App & Hardware": "App & Hardware",
   "AI Pet Health System": "AI 宠物健康系统",
   "An integrated smart hardware + software solution for pet health management": "宠物健康管理的智能软硬件一体化方案",
@@ -101,5 +100,10 @@
   "Date": "时间",
   "PROJECT": "PROJECT",
   "CASE STUDY": "CASE STUDY",
-  "STARTUP PRODUCT": "STARTUP PRODUCT"
+  "STARTUP PRODUCT": "STARTUP PRODUCT",
+  "Four end-to-end case studies spanning smart hardware, mixed reality, consumer apps and AI content workflows.": "四个完整的项目案例，覆盖智能硬件、混合现实、消费级 App 与 AI 内容工作流。",
+  "AI Workflow": "AI Workflow",
+  "Private": "私密",
+  "AI Story Studio": "AI 故事工作室",
+  "An AI-native content workflow: knowledge base, prompt pipeline, quality gates and data loop": "AI 原生内容工作流：知识库、提示词流水线、质量关卡与数据闭环"
 }

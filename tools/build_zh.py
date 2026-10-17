@@ -46,7 +46,7 @@ def to_zh(html, rel, zh=ZH):
         if t.find_parent(class_='slides') or t.find_parent(attrs={'translate': 'no'}):
             continue
         key = norm(t)
-        if not key or not any(c.isalpha() for c in key):
+        if not key or (key not in zh and not any(c.isalpha() for c in key)):
             continue
         if key in zh:
             lead = ' ' if t[:1].isspace() else ''

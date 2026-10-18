@@ -1149,3 +1149,26 @@ main.locked { position: relative; isolation: isolate; min-height: 100svh; displa
   .bars { gap: 5px; }
   .bar span { font-size: 9.5px; }
 }
+
+/* ---------- AI Story Studio: trend markers in the data table ---------- */
+.tiers.vids div:first-child small { display: block; margin-top: 3px; font-size: 11px; letter-spacing: 0.02em; text-transform: none; color: var(--accent); }
+.tiers.vids .d { display: inline-block; margin-left: 6px; font-style: normal; font-size: 11px; font-weight: 600; color: var(--text-3); }
+.tiers.vids .d.ok, .tiers.vids .d.up { color: var(--accent); }
+.tiers.vids .d.pill { padding: 1px 7px; border-radius: 999px; background: rgba(255, 255, 255, 0.07); color: var(--text-2); }
+.tiers.vids .d.up.pill { padding: 1px 7px; border-radius: 999px; background: rgba(255, 155, 122, 0.14); color: var(--accent); }
+.tiers.vids .cr { display: block; }
+.tiers.vids .cr.ok { color: #fff; font-weight: 600; }
+.tiers.vids .meter { position: relative; display: block; max-width: 92px; height: 4px; margin-top: 6px; border-radius: 2px; background: rgba(255, 255, 255, 0.08); }
+.tiers.vids .meter::before { content: ""; position: absolute; inset: 0 auto 0 0; width: var(--v); border-radius: inherit; background: rgba(255, 255, 255, 0.28); }
+.tiers.vids .cr.ok .meter::before { background: var(--accent); }
+.tiers.vids .meter::after { content: ""; position: absolute; left: 80%; top: -3px; bottom: -3px; width: 1.5px; border-radius: 1px; background: rgba(255, 255, 255, 0.7); }
+.tiers.vids div.phase { display: block; margin-top: 10px; padding: 4px 4px 2px; background: none; box-shadow: none; }
+.tiers.vids div.phase p { display: flex; flex-wrap: wrap; align-items: baseline; gap: 4px 12px; }
+.tiers.vids div.phase b { padding: 4px 12px; border-radius: 999px; background: rgba(255, 155, 122, 0.14); font-size: 12.5px; color: var(--accent); }
+.tiers.vids div.phase span { font-size: 13px; color: var(--text-3); }
+.tiers.vids div.sum { margin-top: 6px; background: none; box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.12); border-radius: 0; color: #fff; font-weight: 600; }
+.tiers.vids div.sum > b { color: var(--accent); }
+.tiers.vids div.sum .d { margin-left: 4px; }
+@media (max-width: 600px) {
+  .tiers.vids .d.pill { display: block; width: max-content; margin: 4px 0 0; }
+}

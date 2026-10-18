@@ -101,9 +101,10 @@
   "PROJECT": "PROJECT",
   "CASE STUDY": "CASE STUDY",
   "STARTUP PRODUCT": "STARTUP PRODUCT",
-  "Four end-to-end case studies spanning smart hardware, mixed reality, consumer apps and AI content workflows.": "四个完整的项目案例，覆盖智能硬件、混合现实、消费级 App 与 AI 内容工作流。",
   "AI Workflow": "AI Workflow",
   "Private": "私密",
   "AI Story Studio": "AI 故事工作室",
-  "An AI-native content workflow: knowledge base, prompt pipeline, quality gates and data loop": "AI 原生内容工作流：知识库、提示词流水线、质量关卡与数据闭环"
+  "An AI tool for AIGC video topics and stories, validated on Douyin with 1.45M+ views": "AIGC 视频选题与故事生成 AI 工具，抖音验证播放 145 万+",
+  "Four end-to-end case studies spanning smart hardware, mixed reality, consumer apps and AI tools.": "四个完整的项目案例，覆盖智能硬件、混合现实、消费级 App 与 AI 工具。",
+  "AI Tool": "AI Tool"
 }

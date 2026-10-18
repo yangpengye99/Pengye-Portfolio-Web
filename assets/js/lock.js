@@ -36,6 +36,8 @@
       });
     }, { rootMargin: "0px 0px 8% 0px", threshold: 0 });
     main.querySelectorAll(".reveal, .reveal-scale").forEach((el) => io.observe(el));
+    // videos inserted after load: start the muted autoplay ones explicitly
+    main.querySelectorAll("video[autoplay]").forEach((v) => { v.muted = true; v.play().catch(() => {}); });
   }
 
   async function unlock(password, remember) {

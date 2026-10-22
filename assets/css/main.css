@@ -1134,7 +1134,7 @@ main.locked { position: relative; isolation: isolate; min-height: 100svh; displa
 .goal-delta { margin-top: 6px; }
 .goal-delta b { display: block; font-size: clamp(30px, 3.2vw, 44px); font-weight: 700; letter-spacing: -0.02em; color: var(--accent); }
 .goal-delta span { font-size: 13px; color: var(--text-3); }
-.bars { display: grid; grid-template-columns: repeat(8, 1fr); gap: 8px; align-items: end; height: 150px; margin: 22px 0 38px; padding-top: 18px; }
+.bars { display: grid; grid-auto-flow: column; grid-auto-columns: 1fr; gap: 8px; align-items: end; height: 150px; margin: 22px 0 38px; padding-top: 18px; }
 .bar { position: relative; display: flex; flex-direction: column; justify-content: flex-end; align-items: center; height: 100%; }
 .bar i { display: block; width: 100%; height: var(--h); min-height: 3px; border-radius: 6px 6px 3px 3px; background: rgba(255, 255, 255, 0.14); }
 .bar.hl i { background: var(--accent); }

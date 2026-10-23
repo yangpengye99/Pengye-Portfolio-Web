@@ -1,4 +1,4 @@
-"""Cache-bust: rewrite every /assets/css, /assets/js and /assets/img URL in href/src to ?v=<content hash>.
+"""Cache-bust: rewrite every /assets/css, /js, /img and /video URL in href/src/poster to ?v=<content hash>.
 /assets is cached for 7 days (vercel.json), so a changed file must get a new URL or returning visitors
 keep the old one. Run this LAST (after build_zh.py and build_locked.py), whenever CSS, JS or any image
 changes; it stamps the EN pages and the generated /zh pages. build_locked.py also calls stamp_text()
@@ -10,7 +10,7 @@ import re
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 _hash = {}
-URL = re.compile(r'(href|src)="(/assets/(?:css|js|img)/[^"?]+)(?:\?v=[0-9a-f]+)?"')
+URL = re.compile(r'(href|src|poster)="(/assets/(?:css|js|img|video)/[^"?]+)(?:\?v=[0-9a-f]+)?"')
 
 
 def ver(path):
